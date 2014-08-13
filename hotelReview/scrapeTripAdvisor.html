@@ -55,7 +55,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 
-<p>I wanted to explore how to scrape web data using R.I chose to scrape data for hotel reviews from <a href="http://www.tripadvisor.com">Trip Advisor</a>. I show snippets of code below for illustrative purposes. The full code for scraping the data is in the following [location].</p>
+<p>I wanted to explore how to scrape web data using R.I chose to scrape data for hotel reviews from <a href="http://www.tripadvisor.com">Trip Advisor</a>. I show snippets of code below for illustrative purposes. The full code for scraping the data is in the following <a href="https://github.com/notesofdabbler/blog_notesofdabbler/blob/master/hotelReview/scrapeTripAdvisor.R">location</a>.</p>
 <p>First I looked up the URL by typing the hotel name in Trip Advisor site. I chose J.W.Marriott in Indianapolis as an example. The main page URL is</p>
 <p><a href="http://www.tripadvisor.com/Hotel_Review-g37209-d1762915-Reviews-JW_Marriott_Indianapolis-Indianapolis_Indiana.html">http://www.tripadvisor.com/Hotel_Review-g37209-d1762915-Reviews-JW_Marriott_Indianapolis-Indianapolis_Indiana.html</a>.</p>
 <p>But the search results span multiple pages. The URL follows the following pattern; for example, page 3 of search results have the URL</p>
@@ -112,7 +112,7 @@ getfullrev=function(urllink,id){
   return(xmlValue(ns_fullrev[[1]]))  
   
 }</code></pre>
-<p>The full code is in the following [location]. The top 5 records of the dataset created with this code is shown below</p>
+<p>The full code is in the following <a href="https://github.com/notesofdabbler/blog_notesofdabbler/blob/master/hotelReview/scrapeTripAdvisor.R">location</a>. The top 5 records of the dataset created with this code is shown below</p>
 <pre><code>##            id
 ## 1 rn220694072
 ## 2 rn220524586
@@ -155,6 +155,7 @@ getfullrev=function(urllink,id){
 ## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \nI've stayed at this hotel several times over the last year and have always enjoyed the experience. The location is ideal for access to Indianapolis sites and restaurants. Great hotel for the money - my first choice when traveling to Indianapolis.\n
 ## 5 \nMy husband's company had their annual sales meeting there...I was very lucky to accompany him. I loved this hotel! Very nice open lobby that one comes to expect from a Marriott. However our room, VIEW, 21st floor, had three floor to ceiling widows that looked over the White River and surrounding park, walk ways, museums, ball parks, and zoo. I am sure I am forgetting something because it was so expansive...while my husband was at meetings I could spend my days taking in all this area had to offer! The hotel staff was friendly and accommodating, food was good at all of his meetings. This JW was the best location ever for a business meeting...close to all the above plus downtown shopping and restaurants! Great stay:)\n
 ## 6                                                                                                                                                                                                                                                                                 \nStayed here for a few months.3 restaurants (sports bar, lounge bar, italian) all worth eating at!Property is HUGE, used for many conferences.Starbucks on the 2nd floor - go up the elevator to the left of the entrance.The gym is one of the best I have used, and rarely packed. Free weights always available.Close to the river/canal walks,other hotels, the Indianapolis state museum.What would have made it a 5-star?Rooms are quiet, rarely heard anything\n</code></pre>
+<p>Next I did some exploratory analysis with this data and is described <a href="https://github.com/notesofdabbler/blog_notesofdabbler/blob/master/hotelReview/analyzeTripAdvisor.R">here</a>.</p>
 
 
 </div>

@@ -3,7 +3,7 @@ title: "Scraping Web Data from Trip Advisor with R"
 output: html_document
 ---
 
-I wanted to explore how to scrape web data using R.I chose to scrape data for hotel reviews from [Trip Advisor](http://www.tripadvisor.com). I show snippets of code below for illustrative purposes. The full code for scraping the data is in the following [location].
+I wanted to explore how to scrape web data using R.I chose to scrape data for hotel reviews from [Trip Advisor](http://www.tripadvisor.com). I show snippets of code below for illustrative purposes. The full code for scraping the data is in the following [location](https://github.com/notesofdabbler/blog_notesofdabbler/blob/master/hotelReview/scrapeTripAdvisor.R).
 
 First I looked up the URL by typing the hotel name in Trip Advisor site. I chose J.W.Marriott in Indianapolis as an example. The main page URL is
 
@@ -84,11 +84,11 @@ getfullrev=function(urllink,id){
   
 }
 ```
-The full code is in the following [location]. The top 5 records of the dataset created with this code is shown below
+The full code is in the following [location](https://github.com/notesofdabbler/blog_notesofdabbler/blob/master/hotelReview/scrapeTripAdvisor.R). The top 5 records of the dataset created with this code is shown below
 ```{r, echo=FALSE}
 setwd("~/notesofdabbler/blog_notesofdabbler/hotelReview/")
 load(file="dfrating_jwmarriott.Rda")
 head(dfrating)
 ```
 
-Next I did some exploratory analysis with this data and is described [here].
+Next I did some exploratory analysis with this data and is described [here](https://github.com/notesofdabbler/blog_notesofdabbler/blob/master/hotelReview/analyzeTripAdvisor.R).
