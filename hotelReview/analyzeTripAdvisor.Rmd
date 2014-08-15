@@ -129,7 +129,7 @@ The more choppy areas of % of ratings plot correspond to periods with very less 
 
 ## Words in Top Quote for a Review
 
-I wanted to check out the top words occuring in top quotes associated with review for each star rating. Though I show the top words for each start rating, we should remember that the frequency of lower start ratings in data is low.
+I wanted to check out the top words occuring in top quotes associated with review for each star rating. Though I show the top words for each star rating, we should remember that the frequency of lower star ratings in data is low.
 
 ```{r,warning=FALSE,tidy=FALSE}
 # Explore top level quotes for each rating
@@ -203,9 +203,11 @@ topTerms.l[["hamptoninn"]]$topTerms
 
 ```
 
+One thing I want to explore in the future is to train such a data set (features being words and response being rating) using Trip Advisor reviews and use it to predict rating in some other area (such as tweets on a topic).
+
 ## Exploring Full Review Text
 
-Next, I wanted to explore the full text review to see if there are themes. Right now, I am not too familiar with topic model packages (on my near term todo list). For now, I took a more simpler approach of just using k-means clustering of words using term document term matrix find cluster of words. Here I just picked 5 clusters and haven't checked what the right number of clusters are.
+Next, I wanted to explore the full text review to see if there are themes. Right now, I am not too familiar with topic model packages (on my near term todo list). For now, I took a more simpler approach of just using k-means clustering of words using term document term matrix to find cluster of words. Here I just picked 5 clusters and haven't checked what the right number of clusters are.
 
 ```{r,warning=FALSE,tidy=FALSE}
 # Further investigation of high star rating using full reviews for a hotel

@@ -255,7 +255,7 @@ p</code></pre>
 </div>
 <div id="words-in-top-quote-for-a-review" class="section level2">
 <h2>Words in Top Quote for a Review</h2>
-<p>I wanted to check out the top words occuring in top quotes associated with review for each star rating. Though I show the top words for each start rating, we should remember that the frequency of lower start ratings in data is low.</p>
+<p>I wanted to check out the top words occuring in top quotes associated with review for each star rating. Though I show the top words for each star rating, we should remember that the frequency of lower star ratings in data is low.</p>
 <pre class="r"><code># Explore top level quotes for each rating
 
 # function to get document-term matrix from hotel review data for a given hotel
@@ -429,10 +429,11 @@ topTerms.l[[&quot;jwmarriott&quot;]]$topTerms</code></pre>
 ## [18,] &quot;amazing&quot;     &quot;class&quot;       &quot;okay&quot;       NA        
 ## [19,] &quot;comfort&quot;     &quot;close&quot;       &quot;park&quot;       NA        
 ## [20,] &quot;inns&quot;        &quot;convenient&quot;  &quot;short&quot;      NA</code></pre>
+<p>One thing I want to explore in the future is to train such a data set (features being words and response being rating) using Trip Advisor reviews and use it to predict rating in some other area (such as tweets on a topic).</p>
 </div>
 <div id="exploring-full-review-text" class="section level2">
 <h2>Exploring Full Review Text</h2>
-<p>Next, I wanted to explore the full text review to see if there are themes. Right now, I am not too familiar with topic model packages (on my near term todo list). For now, I took a more simpler approach of just using k-means clustering of words using term document term matrix find cluster of words. Here I just picked 5 clusters and haven’t checked what the right number of clusters are.</p>
+<p>Next, I wanted to explore the full text review to see if there are themes. Right now, I am not too familiar with topic model packages (on my near term todo list). For now, I took a more simpler approach of just using k-means clustering of words using term document term matrix to find cluster of words. Here I just picked 5 clusters and haven’t checked what the right number of clusters are.</p>
 <pre class="r"><code># Further investigation of high star rating using full reviews for a hotel
 
 # functiont to cluster words from term document matrix of full reviews for a hotel
