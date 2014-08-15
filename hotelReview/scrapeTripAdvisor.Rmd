@@ -86,9 +86,9 @@ getfullrev=function(urllink,id){
 ```
 The full code is in the following [location](https://github.com/notesofdabbler/blog_notesofdabbler/blob/master/hotelReview/scrapeTripAdvisor.R). The top 5 records of the dataset created with this code is shown below
 ```{r, echo=FALSE}
-setwd("~/notesofdabbler/blog_notesofdabbler/hotelReview/")
+setwd("~/notesofdabbler/githubfolder/blog_notesofdabbler/hotelReview/")
 load(file="dfrating_jwmarriott.Rda")
 head(dfrating)
 ```
 
-Next I did some exploratory analysis with this data and is described [here](https://github.com/notesofdabbler/blog_notesofdabbler/blob/master/hotelReview/analyzeTripAdvisor.R).
+Next I did some exploratory analysis with this data and is described [here](http://notesofdabbler.github.io/201408_hotelReview/analyzeTripAdvisor.html).

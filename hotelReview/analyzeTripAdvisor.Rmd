@@ -1,8 +1,17 @@
+---
+title: "Exploring Hotel Review Data from Trip Advisor"
+output: html_document
+---
 
-#
-# Analyze trip advisor data
-#
+I wanted to explore hotel review data for a few hotels from [Trip Advisor](http://www.tripadvisor.com). I have described scraping data for 3 hotels [here](http://notesofdabbler.github.io/201408_hotelReview/scrapeTripAdvisor.html). The hotels considered are (disclaimer: choice of hotels is random):
 
+* [J. W. Marriott, Indianapolis](http://www.tripadvisor.com/Hotel_Review-g37209-d1762915-Reviews-JW_Marriott_Indianapolis-Indianapolis_Indiana.html)
+* [Conrad, Indianapolis](http://www.tripadvisor.com/Hotel_Review-g37209-d576787-Reviews-Conrad_Indianapolis-Indianapolis_Indiana.html)
+* [Hampton Inn Indanapolis Northwest - Park 100, Indianapolis](http://www.tripadvisor.com/Hotel_Review-g37209-d1236866-Reviews-Hampton_Inn_Indianapolis_Northwest_Park_100-Indianapolis_Indiana.html)
+
+## Loading and Reviewing Data
+
+```{r loaddata,warning=FALSE,tidy=FALSE}
 # set working directory
 setwd("~/notesofdabbler/githubfolder/blog_notesofdabbler/hotelReview/")
 
@@ -50,7 +59,13 @@ dfrating.l[["conrad"]]$freqRating
 dfrating.l[["hamptoninn"]]$top3records
 dfrating.l[["hamptoninn"]]$numrevs
 dfrating.l[["hamptoninn"]]$freqRating
+```
 
+## Ratings Over Time
+
+These 3 hotels are listed among the top 5 hotels in Indianapolis. So most of the ratings are 4 or 5 for these. Next, I have plotted % of reviews with a given rating over time
+
+```{r revbymon,warning=FALSE,tidy=FALSE}
 # function to get number of reviews and % of reviews with a rating
 getrev.bymon=function(hotel){
   
@@ -108,6 +123,15 @@ p=p+scale_y_continuous(breaks=seq(0,1,0.1),labels=percent)+scale_color_discrete(
 p=p+theme_bw()
 p
 
+```
+
+The more choppy areas of % of ratings plot correspond to periods with very less reviews.
+
+## Words in Top Quote for a Review
+
+I wanted to check out the top words occuring in top quotes associated with review for each star rating. Though I show the top words for each start rating, we should remember that the frequency of lower start ratings in data is low.
+
+```{r,warning=FALSE,tidy=FALSE}
 # Explore top level quotes for each rating
 
 # function to get document-term matrix from hotel review data for a given hotel
@@ -177,6 +201,13 @@ topTerms.l[["jwmarriott"]]$topTerms
 topTerms.l[["conrad"]]$topTerms
 topTerms.l[["hamptoninn"]]$topTerms
 
+```
+
+## Exploring Full Review Text
+
+Next, I wanted to explore the full text review to see if there are themes. Right now, I am not too familiar with topic model packages (on my near term todo list). For now, I took a more simpler approach of just using k-means clustering of words using term document term matrix find cluster of words. Here I just picked 5 clusters and haven't checked what the right number of clusters are.
+
+```{r,warning=FALSE,tidy=FALSE}
 # Further investigation of high star rating using full reviews for a hotel
 
 # functiont to cluster words from term document matrix of full reviews for a hotel
@@ -229,3 +260,13 @@ clust.topic[["conrad"]]$clust.topic
 
 clust.topic[["hamptoninn"]]$clust.topic
 
+```
+
+I was finding it hard to assign themes that differentiate clusters. Perhaps I need to do a better job filtering words or play around more with parameters for clustering or check out algorithms for topic models. Nevertheless, this was a fun exercise.
+
+## Session Info
+All analysis was done in RStudio 0.98.994
+
+```{r}
+sessionInfo()
+```
