@@ -70,7 +70,7 @@ p=p+geom_polygon(data=zipShp3,aes(x=long,y=lat,group=id),fill="blue",color="blac
 print(p)
 
 # Get Census Data
-APIkey="a4b8da9680c7d344901a8fd40af0041eb006e5d6"
+APIkey="yourkey"
 
 # state code (indiana)
 state=39
@@ -157,7 +157,7 @@ print(p2)
 
 ## download demographics data to a folder
 
-zwsid="X1-ZWz1dos5k0i423_23up5"
+zwsid="yourid"
 zipList=zipLoc2$ZCTA5
 
 for (i in 1:length(zipList)) {
