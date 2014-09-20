@@ -11,6 +11,8 @@ library(tm)
 
 # load data
 load(file="paperInfo.Rda")
+load(file="authdf.Rda")
+load(file="affildf.Rda")
 
 sessions <- paperInfo%>%group_by(topic,session)%>%summarize(talks=n())
 topics <- sessions%>%group_by(topic)%>%summarize(talks=sum(talks),sessions=n())
@@ -22,6 +24,14 @@ topics%>%arrange(desc(talks))%>%select(topic,talks)
 
 pickTopic <- "Pharmaceutical Discovery, Development and Manufacturing Forum"
 topicDetail <- paperInfo%>%filter(topic==pickTopic)
+topicDetail_id <- as.data.frame(topicDetail$id)
+names(topicDetail_id) <- c("id")
+
+topicAuth <- inner_join(authdf,topicDetail_id,by=c("id"))
+cntAuth <- topicAuth%>%group_by(authonly)%>%summarize(count=n())%>%arrange(desc(count))
+
+topicAffil <- inner_join(affildf,topicDetail_id,by=c("id"))
+cntAffil <- topicAffil%>%group_by(affilonly)%>%summarize(count=n())%>%arrange(desc(count))
 
 # process titles
 titles <- Corpus(VectorSource(topicDetail$title))
