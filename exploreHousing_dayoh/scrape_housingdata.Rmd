@@ -1,0 +1,32 @@
+```{r}
+#
+# Scrape data on house listings from realtor.com
+#
+
+# set working directory
+setwd("~/notesofdabbler/Rspace/dayoh_housing/")
+
+# load libraries
+library(rvest)
+library(XML)
+
+
+#
+# Search URL with following filter applied
+# 3+ bedrooms, 2+ baths, 1800+ sqft, 0-20 years old
+#
+srchurl="http://www.realtor.com/realestateandhomes-search/Centerville_OH/beds-3/baths-2/sqft-8/pfbm-10/show-hide-pending"
+
+# using XML library
+housedoc=htmlTreeParse(srchurl,useInternalNodes=TRUE)
+ns_id=getNodeSet(housedoc,"//ul[@class='listing-summary']//li[@class='listing-location']//a[@href]") 
+id=sapply(ns_id,function(x) xmlAttrs(x)["href"])
+id
+
+# using rvest library
+housedoc = html(srchurl) 
+houselist = housedoc %>% html_nodes(".listing-summary")
+id =  houselist %>% html_node(".listing-location a") %>% html_attr("href")
+id
+```
+
