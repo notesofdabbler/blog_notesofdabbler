@@ -1,0 +1,159 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warnings=FALSE,tidy=FALSE,cache=TRUE)
+```
+
+# Explore Kaggle Competition data
+
+I wanted to explore the competition data in [Kaggle](http://www.kaggle.com) and see if I can answer the following questions:
+
+* Is prize money a key motivator for participants?
+
+I tried to answer this question by looking at a scatter plot of number of participating teams vs prize money. The hypothesis before starting the analysis for me is that prize money is not a key motivator but the satisfaction of tackling a challenging problem is what drives participation.
+
+* Is prize money that is set based on perceived difficulty of the problem?
+
+I took the number of days a competition was run as a surrogate for the diffculty as percieved by the sponsor of the competition (this may not be the best metric but in the absence of anything else, I decided to use this). I tried to answer this question by looking at a scatter plot of prize money vs duration of competition. 
+
+* Which knowledge competitions are popular?
+
+I looked at a bar graphs of number of teams participating in each knowledge competition to answer this question.
+
+
+## Scrape Kaggle Competition data
+
+The data I need for this exercise is the list of all competitions that were run, the prize money, number of teams, and the duration of competition. All of this data is available at the [following](http://www.kaggle.com/competitions) site. The page only shows active competitions. To view all competitions, I needed to click a checkbox in the webpage which executes a javascript component to retrieve completed competitions. I saved the webpage locally (use the option of saving a complete webpage) since that resulted in a html file that shows the results of the executed javascript and hence has both active and completed competitions. 
+
+```{r}
+# set working directory
+setwd("~/notesofdabbler/githubfolder/blog_notesofdabbler/exploreKaggle/")
+
+# load libraries
+library(rvest)
+library(dplyr)
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+library(ggplot2)
+
+# Get list of competitions
+localfile = "kaggleCompetitionList.html"
+compdata = html(localfile)
+
+# get names of competitions
+compnames = compdata %>% html_nodes(".competition-details h4") %>% html_text()
+# get links for each competition
+complinks = compdata %>% html_nodes(".competition-details") %>% html_node("a") %>% html_attr("href") 
+# get the competition type (knowledge, job or prize amount)
+comptype = compdata %>% html_nodes(xpath = "//tr//td[2]") %>% html_text()
+
+# Assign prizeCompetition label to competitions that have prizes
+comptype2 = comptype
+comptype2[grepl("[$]",comptype)] = "prizeCompetition"
+
+# get numeric value of prize for prize competitions and set to 0 for other competition types
+compprize = ifelse(comptype2 == "prizeCompetition",comptype,0)
+compprize = as.numeric(gsub("[$,]","",compprize))
+
+# get number of teams
+compnumteams = compdata %>% html_nodes(xpath = "//tr//td[3]") %>% html_text()
+compnumteams = as.numeric(compnumteams)
+
+# combine into a dataframe
+compdf = data.frame(compnames,complinks,comptype,comptype2,compprize,compnumteams,stringsAsFactors = FALSE)
+
+head(compdf)
+
+```
+
+To get the duration of a competition, I needed to get the data from the page for the competition.
+
+```{r}
+# function to extract number of days a competition was run
+# input is the specific page for the competition
+# the total days is in parenthesis and regex is used to extract that
+getDays = function(htmlnode){
+  txt = htmlnode %>% html_text()
+  txtlefttrim = gsub("^.*\\(","",txt)
+  txtrttrim = gsub("\\).*$","",txtlefttrim)
+  numdays = gsub("[,a-zA-Z ]","",txtrttrim)
+  numdays = as.numeric(numdays)
+  return(numdays)
+}
+
+# Get duration of each competition
+
+duration = rep(0,length(complinks))
+for(i in 1:length(complinks)){
+  comppg = html(complinks[i])
+  durationNode = comppg %>% html_nodes("#end-time-note")
+  if(length(durationNode) > 0){
+    duration[i] = getDays(durationNode)
+  }
+#  print(i)  
+}
+
+compdf["duration"] = duration
+
+head(compdf)
+```
+
+## Analyze Kaggle competition data
+
+First a tool tip field containing competition name, prize money and number of teams is created for use in googleVis charts. 
+
+```{r}
+# create a field to show as tooltip in googleVis scatter plot
+# this has the following information:
+# Competition name, prize, number of teams
+compdf[["pop.html.tooltip"]] = paste(compdf[["compnames"]],"</br>",
+                                     "Prize ($):",compdf[["compprize"]],"</br>",
+                                     "Duration (days):",compdf[["duration"]],"</br>",
+                                     "Number of teams:",compdf[["compnumteams"]],sep="")
+compdf[["pop.html.tooltip"]][1]
+```
+
+* Is prize money a motivating factor for participation?
+
+The scatter plot below of number of teams vs prize money doesn't show much of a trend thus indicating the prize money is not a key motivating factor for participation. The data only includes competitions that offered prize money and is public. *(Note: You can zoom by dragging left mouse and reset zoom by right-clicking the plot. You can also hover over a point to see the info on the competition represented by the point)*
+
+```{r, results='asis'}
+# plot of number of teams vs prize
+pltdf = compdf[,c("compprize","compnumteams","pop.html.tooltip")] %>% filter(compprize > 0)
+plt = gvisScatterChart(pltdf,options=list(tooltip="{isHtml:'true'}",
+                                          explorer="{actions: ['dragToZoom', 
+                                          'rightClickToReset'],
+                                          maxZoomIn:0.05}",
+                                          vAxis="{title:'# teams'}",
+                                          hAxis="{title:'Prize ($)'}",
+                                          width=600,height=600))
+plot(plt)
+```
+
+* Is prize money that is set based on perceived difficulty of the problem?
+
+The scatter plot of prize money vs competition duration (surrogate for difficulty) does not show a trend. The caveat is that competition duration might not be the right measure of difficulty. One hypothesis could be that the prize money is set by sponsor more based on the value they expect to achieve by implementing the solution rather than the difficulty of solving the problem. 
+
+```{r, results='asis'}
+# plot of duration vs prize
+pltdf = compdf[,c("compprize","duration","pop.html.tooltip")] %>% filter(compprize > 0,duration > 0)
+plt = gvisScatterChart(pltdf,options=list(tooltip="{isHtml:'true'}",
+                                          explorer="{actions: ['dragToZoom', 
+                                          'rightClickToReset'],
+                                           maxZoomIn:0.05}",
+                                          vAxis="{title:'Duration (days)'}",
+                                          hAxis="{title:'Prize ($)'}",
+                                          width=600,height=600))
+plot(plt)
+```
+
+* Which knowledge competitions are popular?
+
+The bar graph below shows the knowledge competitions in decreasing order of number of participating teams. The top 2 competitions are "Titanic Machine Learning" and "Bike Sharing Demand".
+
+```{r}
+p=ggplot(data=compdf %>% filter(comptype2 == "Knowledge"),
+       aes(x=reorder(compnames,compnumteams),y=compnumteams))+geom_bar(stat="identity")+
+       xlab("")+ylab("# Teams")+
+       coord_flip()+theme_bw()
+print(p)
+```
