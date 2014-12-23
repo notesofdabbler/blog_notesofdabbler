@@ -1,7 +1,17 @@
-##
-## Explore Kaggle User data
-##
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warnings=FALSE,tidy=FALSE)
+```
+
+# Explore Kaggle User Profile
+
+I extracted the user information from [kaggle](http://www.kaggle.com) for about top 500 ranked kaggle users and created an exploratory plots of best rank for a user by country and number of users by country.
+
+## Scraping User Information
+
+The [following]("http://www.kaggle.com/users") site has users listed in the order of rank over multiple pages. About 13 pages cover users with ranks upto 520. I extracted the information on user name, user rank, number of competitions and location country. Not all of the users had listed the country and so there were some unknown locations in the data.
+
+```{r}
 # set working directory
 setwd("~/notesofdabbler/githubfolder/blog_notesofdabbler/exploreKaggle/")
 
@@ -10,6 +20,8 @@ library(rvest)
 library(stringr)
 library(dplyr)
 library(googleVis)
+op <- options(gvis.plot.tag='chart')
+
 library(ggplot2)
 
 # Get url of pages that contain users
@@ -55,6 +67,11 @@ for(i in 1:length(urllist)){
 usrdf2 = rbind_all(usrdf)
 head(usrdf2)
 
+```
+
+The user country field needed some manual cleaning to match the country name needed for googleVis geo chart. I exported the country list in the extracted Kaggle user data to a csv file, manually appended the country names that are needed for googleVis chart and imported it back.
+
+```{r}
 # clean up location field 
 # currently logic of extracting location was looking for last entry in a vector
 # if location is unknown, the last entry corresponds to number of competitions
@@ -80,8 +97,20 @@ cntrylist_cleaned = read.csv("cntrylist_cleaned.csv",sep=",")
 
 # merge cleaned country list
 usrdf3 = merge(usrdf2,cntrylist_cleaned,by.x=c("usrloc2"),by.y=c("cntryName"))
-head(usrdf3)
 
+head(usrdf3)
+```
+
+## Analyze and Visualize Data
+
+I summarize the data by country to get the following:
+
+* Number of users
+* Averge rank
+* Best rank
+* Competitions per user
+
+```{r}
 # Summary by country
 #  - number of users
 #  - average rank of users
@@ -93,7 +122,11 @@ cntrycnt3 = usrdf3 %>% group_by(cntryName2)%>%
                   arrange(bestrnk)
 cntrycnt3["compperusr"] = cntrycnt3[["totcomp"]]/cntrycnt3[["cntrycnt"]]
 head(cntrycnt3)
+```
 
+The plot below shows the best rank in each country
+
+```{r,results='asis'}
 # plot user data (best rank by country) in a geochart
 pltdf = cntrycnt3 %>% select(-totcomp)
 names(pltdf) = c("country","NumberOfUsers","AverageRank","BestRank","CompetitionsPerUser")
@@ -106,10 +139,22 @@ T = gvisTable(pltdf,options = list(height=600,width=600),
 
 GT = gvisMerge(G,T,horizontal = TRUE)
 plot(GT)
+```
 
+The plot below shows the number of users by country (caveat: this is just based on top 500 ranked users)
+
+```{r,results='asis'}
 # Plot number of users by country
 G2 = gvisGeoChart(pltdf, locationvar = "country",
                   colorvar = "NumberOfUsers",
                   options=list(height=600,width=600))
 plot(G2)
+```
 
+## Session Info
+
+All analysis was done with RStudio 0.98.1062. 
+
+```{r}
+sessionInfo()
+```

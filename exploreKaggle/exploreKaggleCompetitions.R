@@ -87,13 +87,13 @@ plot(plt)
 
 
 # plot of duration vs prize
-pltdf = compdf[,c("compprize","duration","pop.html.tooltip")] %>% filter(compprize > 0,duration > 0)
+pltdf = compdf[,c("duration","compprize","pop.html.tooltip")] %>% filter(compprize > 0,duration > 0)
 plt = gvisScatterChart(pltdf,options=list(tooltip="{isHtml:'true'}",
                                           explorer="{actions: ['dragToZoom', 
                                           'rightClickToReset'],
                                            maxZoomIn:0.05}",
-                                          vAxis="{title:'Duration (days)'}",
-                                          hAxis="{title:'Prize ($)'}",
+                                          hAxis="{title:'Duration (days)'}",
+                                          vAxis="{title:'Prize ($)'}",
                                           width=600,height=600))
 plot(plt)
 
@@ -108,7 +108,7 @@ plt = gvisScatterChart(pltdf,options=list(tooltip="{isHtml:'true'}",
                                           width=600,height=600))
 plot(plt)
 
-
+# popular knowledge competitions in kaggle
 ggplot(data=compdf %>% filter(comptype2 == "Knowledge"),
        aes(x=reorder(compnames,compnumteams),y=compnumteams))+geom_bar(stat="identity")+
        xlab("")+ylab("# Teams")+
