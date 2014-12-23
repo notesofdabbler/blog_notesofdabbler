@@ -1,0 +1,44 @@
+/**/_xdc_._y1l2qa && _xdc_._y1l2qa( {
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Russia",
+               "short_name" : "RU",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Russia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 81.8581221,
+                  "lng" : -169.045286
+               },
+               "southwest" : {
+                  "lat" : 41.185353,
+                  "lng" : 19.6403534
+               }
+            },
+            "location" : {
+               "lat" : 61.52401,
+               "lng" : 105.318756
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 70,
+                  "lng" : 179
+               },
+               "southwest" : {
+                  "lat" : 40,
+                  "lng" : 27
+               }
+            }
+         },
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
+ )
