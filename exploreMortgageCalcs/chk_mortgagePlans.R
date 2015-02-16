@@ -16,7 +16,7 @@ mnthpymt = function(term,apr,loan){
 }
 
 # 30 yr fixed rate payment
-loan = 332000 * 0.8
+loan = 200000 * 0.8
 pymt = mnthpymt(term = 30, apr = 4.25, loan)
 totpymnt = 30 * 12 * pymt
 
@@ -71,7 +71,7 @@ paystruct = function(chgpts,chgfee,termyr,apryr,initloan,xtrapymt,numyrs){
 }
 
 
-initloan = 332000*0.8
+initloan = 200000*0.8
 
 chgpts = rep(0,30)
 chgfee = rep(0,30)
@@ -95,7 +95,7 @@ ggplot(data=payfixed,aes(x=mnth/12,y=mnthpay)) + geom_line()+
     scale_x_continuous(breaks = seq(0,numyrs))+theme_bw()
 
 
-initloan = 332000*0.8
+initloan = 200000*0.8
 numyrs = 30
 chgpts = rep(0,30)
 chgpts[c(1,6,11)] = 1
