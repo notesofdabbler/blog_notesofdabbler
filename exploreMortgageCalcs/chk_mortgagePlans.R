@@ -2,6 +2,7 @@
 # load libraries
 library(ggplot2)
 library(scales)
+library(rbokeh)
 
 # get payment per month for a given term (yrs), annual interest (%), loan amount ($)
 
@@ -15,10 +16,6 @@ mnthpymt = function(term,apr,loan){
     return(pymt)
 }
 
-# 30 yr fixed rate payment
-loan = 200000 * 0.8
-pymt = mnthpymt(term = 30, apr = 4.25, loan)
-totpymnt = 30 * 12 * pymt
 
 # 5 yr adj rate smart mortgage
 
@@ -71,12 +68,13 @@ paystruct = function(chgpts,chgfee,termyr,apryr,initloan,xtrapymt,numyrs){
 }
 
 
-initloan = 200000*0.8
+initloan = 200000
 
 chgpts = rep(0,30)
 chgfee = rep(0,30)
 termyr = rep(30,30)
 apryr = rep(4.25,30)
+#xtrapymt = rep(0,30)
 xtrapymt = rep(180,30)
 numyrs = 30
 chgpts[1] = 1
@@ -92,20 +90,26 @@ ggplot(data=payfixed) + geom_line(aes(x=mnth/12,y=totpay))+
   scale_x_continuous(breaks = seq(0,numyrs))+scale_y_continuous(label=dollar)+theme_bw()
 
 ggplot(data=payfixed,aes(x=mnth/12,y=mnthpay)) + geom_line()+
-    scale_x_continuous(breaks = seq(0,numyrs))+theme_bw()
+  scale_x_continuous(breaks = seq(0,numyrs))+theme_bw()
 
 
-initloan = 200000*0.8
+figure()%>%ly_lines(mnth/12,loanresid/1000,data=payfixed)
+figure()%>%ly_lines(mnth/12,netpay/1000,data=payfixed)
+figure()%>%ly_lines(mnth/12,totpay/1000,data=payfixed)
+figure()%>%ly_lines(mnth/12,mnthpay,data=payfixed)
+
+
+initloan = 200000
 numyrs = 30
 chgpts = rep(0,30)
 chgpts[c(1,6,11)] = 1
 chgfee = rep(0,30)
 chgfee[1] = 3200
 chgfee[c(6,11)] = 500
-termyr = c(rep(30,10),rep(20,20))
-apryr = c(rep(2.65,5),rep(6,5),rep(6,20))
+termyr = rep(30,30)
+termyr = seq(30,1)
+apryr = c(rep(2.65,5),rep(5,5),rep(8,20))
 xtrapymt = rep(180,30)
-xtrapymt[11] = 0
 
 payadj = paystruct(chgpts,chgfee,termyr,apryr,initloan,xtrapymt,numyrs)
 
@@ -114,11 +118,20 @@ ggplot()+
   geom_line(data=payadj,aes(x=mnth/12,y=mnthpay),color="blue") + 
   scale_x_continuous(breaks = seq(0,numyrs))+scale_y_continuous(label=dollar)+theme_bw()
 
+figure()%>%
+  ly_lines(mnth/12,mnthpay,data=payfixed,color="red")%>%
+  ly_lines(mnth/12,mnthpay,data=payadj,color="blue")
+
 
 ggplot()+
     geom_line(data=payfixed,aes(x=mnth/12,y=netpay),color="red") + 
     geom_line(data=payadj,aes(x=mnth/12,y=netpay),color="blue") + 
   scale_x_continuous(breaks = seq(0,numyrs))+scale_y_continuous(label=dollar)+theme_bw()
+
+figure()%>%
+  ly_lines(mnth/12,netpay,data=payfixed,color="red")%>%
+  ly_lines(mnth/12,netpay,data=payadj,color="blue")
+
 
 payfixedvsadj = data.frame(mnth = payfixed$mnth,
                            netpayfixed = payfixed$netpay,
@@ -130,3 +143,4 @@ ggplot()+
   geom_hline(aes(yintercept = 0),color="blue")+
   scale_x_continuous(breaks = seq(0,numyrs))+scale_y_continuous(label=dollar)+theme_bw()
 
+figure() %>% ly_lines(mnth/12,deltapay/1000,data=payfixedvsadj,color="blue")
