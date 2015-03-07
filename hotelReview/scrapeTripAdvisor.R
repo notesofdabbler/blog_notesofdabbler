@@ -27,9 +27,9 @@ getOnePage=function(urllink){
   
   ## get node sets
   # review id
-  ns_id=getNodeSet(doc,"//div[@class='quote']/a[@href]") 
+  ns_id=getNodeSet(doc,"//div[@class='quote isNew' or @class='quote ']/a[@href]") 
   # top quote for a review
-  ns_topquote=getNodeSet(doc,"//div[@class='quote']/a[@href]/span") 
+  ns_topquote=getNodeSet(doc,"//div[@class='quote isNew' or @class='quote ']/a[@href]/span") 
   # get partial entry for review that shows in the page
   ns_partialentry=getNodeSet(doc,"//div[@class='col2of2']//p[@class='partial_entry'][1]")
   # date of rating
@@ -117,6 +117,7 @@ dfrating.l=as.list(rep(NA,length(morepg)+1))
 
 for(i in 1:(length(morepg)+1)){
   dfrating.l[[i]]=getOnePage(urllink[i])
+  print(i)
 }
 dfrating=do.call(rbind,dfrating.l)
 head(dfrating)
@@ -156,5 +157,5 @@ head(fullrev)
 dfrating$fullrev=fullrev
 
 # save to Rdataset
-filenm=paste("dfrating_",pickhotel,".Rda",sep="")
+filenm=paste("2015_03_07_dfrating_",pickhotel,".Rda",sep="")
 save(dfrating,file=filenm)
