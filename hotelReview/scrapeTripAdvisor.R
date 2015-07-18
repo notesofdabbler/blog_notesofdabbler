@@ -1,3 +1,12 @@
+#-------------------------------------------------------------------------------------------------------------------------
+#  IMPORTANT NOTE:
+#  This code for scraping was written before I had knowledge of the package rvest (https://github.com/hadley/rvest)
+#  My code here is not robust. I have had instances where some change in underlying html has caused this code to break
+#  rvest has a very clean syntax and is easy to use
+#  rvest has an example on scraping this type of data (https://github.com/hadley/rvest/blob/master/demo/tripadvisor.R)
+#  that is more robust and the code is much cleaner
+#  At some point, I will refactor this code to use rvest
+#-------------------------------------------------------------------------------------------------------------------------
 
 #
 # Scrape some hotel review data from Trip Advisor
@@ -27,9 +36,9 @@ getOnePage=function(urllink){
   
   ## get node sets
   # review id
-  ns_id=getNodeSet(doc,"//div[@class='quote isNew' or @class='quote ']/a[@href]") 
+  ns_id=getNodeSet(doc,"//div[@class='quote isNew' or @class='quote ' or @class='quote']/a[@href]") 
   # top quote for a review
-  ns_topquote=getNodeSet(doc,"//div[@class='quote isNew' or @class='quote ']/a[@href]/span") 
+  ns_topquote=getNodeSet(doc,"//div[@class='quote isNew' or @class='quote ' or @class='quote']/a[@href]/span") 
   # get partial entry for review that shows in the page
   ns_partialentry=getNodeSet(doc,"//div[@class='col2of2']//p[@class='partial_entry'][1]")
   # date of rating
@@ -89,6 +98,7 @@ morepglist=list(
 # pick hotel for which review data is to be extracted
 # choices: jwmarriott,hamptoninn,conrad
 pickhotel="jwmarriott"
+
 
 # get list of urllinks corresponding to different pages
 
