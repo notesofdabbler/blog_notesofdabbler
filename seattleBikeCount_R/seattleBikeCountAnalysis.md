@@ -1,6 +1,6 @@
 # Seattle's Fremont Bridge Bicyclists Again in the News
 
-Back in 2013, David Smith had done analysis of [bicycle trips](http://www.r-bloggers.com/fun-with-fremont-bridge-bicyclists/) 
+Back in 2013, David had done analysis of [bicycle trips](http://www.r-bloggers.com/fun-with-fremont-bridge-bicyclists/) 
 across Seattle's Fremont bridge. More recently, [Jake Vanderplas](http://www.astro.washington.edu/users/vanderplas/) (creator of Python's 
 very popular [Scikit-learn](http://scikit-learn.org/stable/) package)
 wrote a very nice [blog post](https://jakevdp.github.io/blog/2015/07/23/learning-seattles-work-habits-from-bicycle-counts/) on 
@@ -17,15 +17,85 @@ blog post to iPython notebook where you can work through the analysis in Python
 ```r
 # load libraries
 library(dplyr) # data munging
+```
+
+```
+## Warning: package 'dplyr' was built under R version 3.1.2
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+## 
+## The following object is masked from 'package:stats':
+## 
+##     filter
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 library(tidyr) # data munging
 library(ggplot2) # plotting
 library(lubridate) # work with dates
 library(mclust) # for clustering using gaussian mixture model
+```
+
+```
+## Warning: package 'mclust' was built under R version 3.1.3
+```
+
+```
+##     __  ___________    __  _____________
+##    /  |/  / ____/ /   / / / / ___/_  __/
+##   / /|_/ / /   / /   / / / /\__ \ / /   
+##  / /  / / /___/ /___/ /_/ /___/ // /    
+## /_/  /_/\____/_____/\____//____//_/    version 5.0.2
+## Type 'citation("mclust")' for citing this R package in publications.
+```
+
+```r
 library(Cairo) # for getting png outputs
 library(rje) # to use cubehelix colors for plots
+```
+
+```
+## Warning: package 'rje' was built under R version 3.1.3
+```
+
+```
+## 
+## Attaching package: 'rje'
+## 
+## The following object is masked from 'package:dplyr':
+## 
+##     last
+## 
+## The following object is masked from 'package:base':
+## 
+##     arrayInd
+```
+
+```r
 library(timeDate) # get list of US holidays
+```
 
+```
+## Warning: package 'timeDate' was built under R version 3.1.3
+```
 
+```
+## 
+## Attaching package: 'timeDate'
+## 
+## The following object is masked from 'package:Cairo':
+## 
+##     Cairo
+```
+
+```r
 # load data
 # 
 rawcounts = read.csv("https://data.seattle.gov/api/views/65db-xm6k/rows.csv?accessType=DOWNLOAD")
@@ -446,17 +516,16 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] knitr_1.8         timeDate_3012.100 rje_1.9           Cairo_1.5-6      
-## [5] mclust_5.0.2      lubridate_1.3.3   ggplot2_1.0.0     tidyr_0.1        
-## [9] dplyr_0.4.1      
+## [1] timeDate_3012.100 rje_1.9           Cairo_1.5-6       mclust_5.0.2     
+## [5] lubridate_1.3.3   ggplot2_1.0.0     tidyr_0.1         dplyr_0.4.1      
+## [9] knitr_1.8        
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] assertthat_0.1   colorspace_1.2-4 DBI_0.3.1        digest_0.6.4    
 ##  [5] evaluate_0.5.5   formatR_1.0      grid_3.1.1       gtable_0.1.2    
-##  [9] htmltools_0.2.6  labeling_0.3     lazyeval_0.1.10  magrittr_1.0.1  
-## [13] markdown_0.7.4   MASS_7.3-33      memoise_0.2.1    mime_0.1.2      
-## [17] munsell_0.4.2    parallel_3.1.1   plyr_1.8.1       proto_0.3-10    
-## [21] R6_2.0.1         Rcpp_0.11.6      reshape2_1.4     rmarkdown_0.7   
-## [25] scales_0.2.4     stringr_0.6.2    tools_3.1.1
+##  [9] labeling_0.3     lazyeval_0.1.10  magrittr_1.0.1   MASS_7.3-33     
+## [13] memoise_0.2.1    munsell_0.4.2    parallel_3.1.1   plyr_1.8.1      
+## [17] proto_0.3-10     Rcpp_0.11.6      reshape2_1.4     scales_0.2.4    
+## [21] stringr_0.6.2    tools_3.1.1
 ```
 

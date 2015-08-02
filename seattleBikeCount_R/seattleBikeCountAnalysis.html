@@ -63,20 +63,54 @@ img {
 
 <div id="seattles-fremont-bridge-bicyclists-again-in-the-news" class="section level1">
 <h1>Seattle’s Fremont Bridge Bicyclists Again in the News</h1>
-<p>Back in 2013, David Smith had done analysis of <a href="http://www.r-bloggers.com/fun-with-fremont-bridge-bicyclists/">bicycle trips</a> across Seattle’s Fremont bridge. More recently, <a href="http://www.astro.washington.edu/users/vanderplas/">Jake Vanderplas</a> (creator of Python’s very popular <a href="http://scikit-learn.org/stable/">Scikit-learn</a> package) wrote a very nice <a href="https://jakevdp.github.io/blog/2015/07/23/learning-seattles-work-habits-from-bicycle-counts/">blog post</a> on Learning Seattle Work habits from bicycle counts across Fremont bridge.</p>
+<p>Back in 2013, David had done analysis of <a href="http://www.r-bloggers.com/fun-with-fremont-bridge-bicyclists/">bicycle trips</a> across Seattle’s Fremont bridge. More recently, <a href="http://www.astro.washington.edu/users/vanderplas/">Jake Vanderplas</a> (creator of Python’s very popular <a href="http://scikit-learn.org/stable/">Scikit-learn</a> package) wrote a very nice <a href="https://jakevdp.github.io/blog/2015/07/23/learning-seattles-work-habits-from-bicycle-counts/">blog post</a> on Learning Seattle Work habits from bicycle counts across Fremont bridge.</p>
 <p>I wanted to work through Jake’s analysis using R since I am learning R. Please read the original article by Jake to get the full context and thinking behind the analysis. For folks interested in Python, Jake has provided link in the blog post to iPython notebook where you can work through the analysis in Python (and learn some key Python modules: pandas, matplotlib, sklearn along the way)</p>
 <pre class="r"><code># load libraries
-library(dplyr) # data munging
-library(tidyr) # data munging
+library(dplyr) # data munging</code></pre>
+<pre><code>## Warning: package 'dplyr' was built under R version 3.1.2</code></pre>
+<pre><code>## 
+## Attaching package: 'dplyr'
+## 
+## The following object is masked from 'package:stats':
+## 
+##     filter
+## 
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(tidyr) # data munging
 library(ggplot2) # plotting
 library(lubridate) # work with dates
-library(mclust) # for clustering using gaussian mixture model
-library(Cairo) # for getting png outputs
-library(rje) # to use cubehelix colors for plots
-library(timeDate) # get list of US holidays
-
-
-# load data
+library(mclust) # for clustering using gaussian mixture model</code></pre>
+<pre><code>## Warning: package 'mclust' was built under R version 3.1.3</code></pre>
+<pre><code>##     __  ___________    __  _____________
+##    /  |/  / ____/ /   / / / / ___/_  __/
+##   / /|_/ / /   / /   / / / /\__ \ / /   
+##  / /  / / /___/ /___/ /_/ /___/ // /    
+## /_/  /_/\____/_____/\____//____//_/    version 5.0.2
+## Type 'citation(&quot;mclust&quot;)' for citing this R package in publications.</code></pre>
+<pre class="r"><code>library(Cairo) # for getting png outputs
+library(rje) # to use cubehelix colors for plots</code></pre>
+<pre><code>## Warning: package 'rje' was built under R version 3.1.3</code></pre>
+<pre><code>## 
+## Attaching package: 'rje'
+## 
+## The following object is masked from 'package:dplyr':
+## 
+##     last
+## 
+## The following object is masked from 'package:base':
+## 
+##     arrayInd</code></pre>
+<pre class="r"><code>library(timeDate) # get list of US holidays</code></pre>
+<pre><code>## Warning: package 'timeDate' was built under R version 3.1.3</code></pre>
+<pre><code>## 
+## Attaching package: 'timeDate'
+## 
+## The following object is masked from 'package:Cairo':
+## 
+##     Cairo</code></pre>
+<pre class="r"><code># load data
 # 
 rawcounts = read.csv(&quot;https://data.seattle.gov/api/views/65db-xm6k/rows.csv?accessType=DOWNLOAD&quot;)
 
@@ -377,18 +411,17 @@ workingHolidays</code></pre>
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] knitr_1.8         timeDate_3012.100 rje_1.9           Cairo_1.5-6      
-## [5] mclust_5.0.2      lubridate_1.3.3   ggplot2_1.0.0     tidyr_0.1        
-## [9] dplyr_0.4.1      
+## [1] timeDate_3012.100 rje_1.9           Cairo_1.5-6       mclust_5.0.2     
+## [5] lubridate_1.3.3   ggplot2_1.0.0     tidyr_0.1         dplyr_0.4.1      
+## [9] knitr_1.8        
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] assertthat_0.1   colorspace_1.2-4 DBI_0.3.1        digest_0.6.4    
 ##  [5] evaluate_0.5.5   formatR_1.0      grid_3.1.1       gtable_0.1.2    
-##  [9] htmltools_0.2.6  labeling_0.3     lazyeval_0.1.10  magrittr_1.0.1  
-## [13] markdown_0.7.4   MASS_7.3-33      memoise_0.2.1    mime_0.1.2      
-## [17] munsell_0.4.2    parallel_3.1.1   plyr_1.8.1       proto_0.3-10    
-## [21] R6_2.0.1         Rcpp_0.11.6      reshape2_1.4     rmarkdown_0.7   
-## [25] scales_0.2.4     stringr_0.6.2    tools_3.1.1</code></pre>
+##  [9] labeling_0.3     lazyeval_0.1.10  magrittr_1.0.1   MASS_7.3-33     
+## [13] memoise_0.2.1    munsell_0.4.2    parallel_3.1.1   plyr_1.8.1      
+## [17] proto_0.3-10     Rcpp_0.11.6      reshape2_1.4     scales_0.2.4    
+## [21] stringr_0.6.2    tools_3.1.1</code></pre>
 </div>
 </div>
 

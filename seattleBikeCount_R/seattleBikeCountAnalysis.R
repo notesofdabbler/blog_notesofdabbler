@@ -1,6 +1,6 @@
 #' # Seattle's Fremont Bridge Bicyclists Again in the News
 #'
-#' Back in 2013, David Smith had done analysis of [bicycle trips](http://www.r-bloggers.com/fun-with-fremont-bridge-bicyclists/) 
+#' Back in 2013, David had done analysis of [bicycle trips](http://www.r-bloggers.com/fun-with-fremont-bridge-bicyclists/) 
 #' across Seattle's Fremont bridge. More recently, [Jake Vanderplas](http://www.astro.washington.edu/users/vanderplas/) (creator of Python's 
 #' very popular [Scikit-learn](http://scikit-learn.org/stable/) package)
 #' wrote a very nice [blog post](https://jakevdp.github.io/blog/2015/07/23/learning-seattles-work-habits-from-bicycle-counts/) on 
