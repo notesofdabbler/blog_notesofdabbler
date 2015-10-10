@@ -35,7 +35,7 @@ getSessionTalks = function(session,sessionlink){
   sessiontalks
   
   # authors of talks in the session
-  sessionauth = sessiondoc %>% html_nodes(xpath = "//div[@class = 'papertitle']//span[@class = 'paperauthors']") %>% html_text()
+  sessionauth = sessiondoc %>% html_nodes(xpath = "//div[@class = 'papertitle' and count(./a) > 1]//span[@class = 'paperauthors']") %>% html_text()
   
   # links to talks in the session
   sessiontalklinks = sessiondoc %>% html_nodes(xpath = "//div[@class = 'papertitle']//a[2]") %>% html_attr("href")
