@@ -96,12 +96,7 @@ unique(tmpqc2$author)
 # One name appears multiple times due to encoding issues. Manually fix it
 authdf$author2 = ifelse(authdf$author == "Salvador García-MuÃ±oz","Salvador García-Muñoz",authdf$author)
 
-# number of talks by author
-authtalks = authdf %>% group_by(author2) %>% summarize(numtalks = n()) %>% arrange(desc(numtalks))
-head(data.frame(authtalks),30)
-
-authtalks %>% group_by(numtalks) %>% summarize(numauth = n())
-
+# get abstracts for talks
 xtauthinfo = character()
 abstract = character()
 for(i in 1:nrow(talksdf)){
@@ -119,28 +114,7 @@ for(i in 1:nrow(talksdf)){
 talkdetaildf = data.frame(xtauthinfo = xtauthinfo, abstract = abstract)
 talkdetaildf$id = seq(1:nrow(talkdetaildf))
 
-xtauthdfL = list()
-for(i in 1:length(xtauthinfo)){
-  xtauthinfo1 = gsub(" and ",",",xtauthinfo[i])
-  xtauthinfo2 = str_split(xtauthinfo1,",")
-  xtauthinfo3 = str_trim(xtauthinfo2[[1]])
-  xtauthinfo4 = gsub("[0-9)(]","",xtauthinfo3)
-  xtauthdfL[[i]] = data.frame(xtauthor = xtauthinfo4)
-  xtauthdfL[[i]]$id = i
-}
-xtauthdf = bind_rows(xtauthdfL)
-xtauthdf$xtauthor2 = iconv(xtauthdf$xtauthor,"UTF-8","latin1")
-
-# check authors where encoding doesn't work
-tmpqc = xtauthdf[is.na(xtauthdf$xtauthor2),]
-unique(data.frame(tmpqc$xtauthor))
-
-# One name appears multiple times due to encoding issues. Manually fix it
-xtauthdf$xtauthor2 = ifelse(xtauthdf$xtauthor == "Salvador García-MuÃ±oz","Salvador García-Muñoz",xtauthdf$xtauthor)
-
-
 # save datasets
 save(talksdf,file = "talksdf.Rda")
 save(authdf,file = "authdf.Rda")
 save(talkdetaildf,file = "talkdetaildf.Rda")
-save(xtauthdf,file = "xtauthdf.Rda")
