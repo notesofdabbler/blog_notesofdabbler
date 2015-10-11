@@ -1,0 +1,99 @@
+[Continuous Solid-Liquid Separation in Pharmaceutical Manufacturing](https://aiche.confex.com/aiche/2015/webprogram/Paper421537.html)   
+Graz University of Technology; Novartis Pharma AG; RCPE GmbH
+
+
+[A Case Study of Data Analytics for the Manufacturing of a Monoclonal Antibody](https://aiche.confex.com/aiche/2015/webprogram/Paper409106.html)   
+Biogen; Calvin College; MIT
+
+
+[Clone and Media Selection in Mab Biosimilar Process Development](https://aiche.confex.com/aiche/2015/webprogram/Paper428472.html)   
+ETH; Merck Serono S.A.
+
+
+[An Optimization Framework to Combine Design Space Maximization with Design of Experiments](https://aiche.confex.com/aiche/2015/webprogram/Paper413370.html)   
+Eli Lilly & Co.; Imperial College
+
+
+[High-Throughput Polymer Screening for Oral Drug Delivery: From Discovery to Design](https://aiche.confex.com/aiche/2015/webprogram/Paper419844.html)   
+Dow Chemical Company; University of Minnesota
+
+
+[Improving Drug Delivery By Employing Terahertz Technologies to Monitor Manufacturing Processes](https://aiche.confex.com/aiche/2015/webprogram/Paper429258.html)   
+Advantest America , Inc.; Princeton
+
+
+[Hot Melt Coating with Lipid Excipients for User-Friendly Solid Oral Dosage Forms](https://aiche.confex.com/aiche/2015/webprogram/Paper423774.html)   
+Cremer Oleo Gmbh & Co; Hermes Arzneimittel GmbH; Karl-Franzens University; RCPE GmbH; University of Graz
+
+
+[Gluing Pills: A Novel Approach for Processing of Multi-Layer Tablets](https://aiche.confex.com/aiche/2015/webprogram/Paper423668.html)   
+Graz University of Technology; M&R Automation GmbH; RCPE GmbH; RCPE Gmbh
+
+
+[The Use of Gastroplus Modeling in Enabling Drug Discovery Research](https://aiche.confex.com/aiche/2015/webprogram/Paper414059.html)   
+Bristol Myers-Squibb; Princeton
+
+
+[Design and Simulation of a Continuous Bioreactor](https://aiche.confex.com/aiche/2015/webprogram/Paper418599.html)   
+Auburn University; Techshot , Inc.
+
+
+[Dissolution Kinetics of a BCS Class II Active Pharmaceutical Ingredient Using Population Balance Model](https://aiche.confex.com/aiche/2015/webprogram/Paper425610.html)   
+APC Ltd; University College Dublin
+
+
+[Production of Amorphous Nano-Solid Dispersions Using a Solvent Controlled Precipitation Process ? Benchmarking with the Spray Drying Process](https://aiche.confex.com/aiche/2015/webprogram/Paper425948.html)   
+Hovione; University of Lisbon
+
+
+[Particle Engineering of Cocrystals Using a Solvent-Free Approach By Spray Congealing](https://aiche.confex.com/aiche/2015/webprogram/Paper425747.html)   
+Hovione; University of Lisbon
+
+
+[Membrane Enhanced Peptide Synthesis (MEPS) ? Integrating Organic Solvent Nanofiltration (OSN) into Iterative Chemical Reactions](https://aiche.confex.com/aiche/2015/webprogram/Paper410571.html)   
+Imperial College; Lonza AG
+
+
+[Characterization and Modeling of Feeders: A Critical Component in Continuous Pharmaceutical Manufacturing](https://aiche.confex.com/aiche/2015/webprogram/Paper422817.html)   
+Bristol Myers-Squibb; Janssen Pharmaceuticals; Rutgers University
+
+
+[Development of Retinoid ST1926 Nanoparticle Formulation Via Flash Nanoprecipitation](https://aiche.confex.com/aiche/2015/webprogram/Paper427449.html)   
+American University of Beirut; Biogem , Research Institute
+
+
+[Improving Purity and Size Distribution in Biopharmaceutical Crystallization Using PAT-Based Feedback Control Strategies](https://aiche.confex.com/aiche/2015/webprogram/Paper416842.html)   
+Loughborough University; North China Pharmaceutical group Corporation; Purdue University
+
+
+[Systematic Retrofitting Methodology for Pharmaceutical Drug Purification Processes](https://aiche.confex.com/aiche/2015/webprogram/Paper426939.html)   
+ETH; Shionogi & Co. , Ltd; University of Tokyo
+
+
+[Inhibition of Calcium Oxalate Monohydrate Crystallization Using Organic Acids](https://aiche.confex.com/aiche/2015/webprogram/Paper429995.html)   
+Litholink Corporation; University of Chicago; University of Houston; University of Pittsburgh
+
+
+[Scale-up of Agitated Drying: Using Agitator Motor Power Draw to Control Changes in Powder Properties](https://aiche.confex.com/aiche/2015/webprogram/Paper419741.html)   
+Bristol Myers-Squibb; Rutgers University
+
+
+[Accuracy of Micro Powder Dosing and Feeding Via a Vibratory Sieve-Chute](https://aiche.confex.com/aiche/2015/webprogram/Paper427621.html)   
+GlaxoSmithKline; Graz University of Technology; RCPE GmbH
+
+
+[Chromatographic Tools to Predict the Stability of MAbs for Faster Identification of Therapeutic Candidates](https://aiche.confex.com/aiche/2015/webprogram/Paper431162.html)   
+Fujifilm Diosynth Biotechnologies; Imperial College
+
+
+[Hydrodynamics and Mass Transfer Effects in Mini Vessel Dissolution Testing Systems](https://aiche.confex.com/aiche/2015/webprogram/Paper425091.html)   
+Merck; New Jersey Institute of Technology
+
+
+[Stability By Design (SbD): Utilizing Material Science Principles to Predict Physical and Chemical Stability of Pharmaceutical Solids](https://aiche.confex.com/aiche/2015/webprogram/Paper427772.html)   
+Pfizer Worldwide Research; RCPE GmbH
+
+
+[Molecular Modeling to Design and Control (M2DC): A First Principles Approach to Polymorph Prediction and Crystallization Unit Design](https://aiche.confex.com/aiche/2015/webprogram/Paper431785.html)   
+AbbVie Inc.; Purdue University
+

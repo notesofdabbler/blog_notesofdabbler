@@ -3,6 +3,7 @@
 #
 
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 
 # load data
@@ -74,3 +75,33 @@ acadind3 = acadind2 %>% group_by(id) %>% summarize(flagsum = sum(flag))
 table(acadind3$flagsum)/nrow(acadind3)
 
 chk_acadind3 = acadind3 %>% filter(flagsum == 3)
+
+# Create a Rmd file with list of talks where both industry and academia are involved
+chkdetail_acadind3 = inner_join(talksdf,chk_acadind3,by = "id")
+chkdetail_acadind3 = chkdetail_acadind3 %>% select(id,title,talkurl)
+affildf2_agg = affildf2 %>% group_by(id) %>% summarize(affil2 = paste(affil2,collapse = "; "))
+chkdetail_acadind3 = inner_join(chkdetail_acadind3,affildf2_agg,by = "id")
+
+outstr = as.character()
+k = 1
+for(i in 1:nrow(chkdetail_acadind3)){
+  title = chkdetail_acadind3$title[i]
+  talkurl = chkdetail_acadind3$talkurl[i]
+  affilinfo = chkdetail_acadind3$affil2[i]
+  outstr[k] = paste0("[",title,"](",talkurl,")   ")
+  k = k + 1
+  outstr[k] = paste0(affilinfo,"\n\n")
+  k = k + 1
+}
+cat(paste(outstr,collapse = "\n"),file = "acadind.Rmd")
+
+# check split between academia and industry in each session
+acadind3_session = inner_join(acadind3,talksdf[,c("id","session")],by = "id")
+acadind3_session2 = acadind3_session %>% group_by(session,flagsum) %>% summarize(cnt = n())
+acadind3_session2s = spread(acadind3_session2,flagsum,cnt,fill = 0)
+
+ggplot(data = acadind3_session2) + 
+  geom_bar(aes(x = session, y = cnt, fill = factor(flagsum)),stat = "identity",position = "fill") + 
+  xlab("") + ylab("") + 
+  scale_fill_discrete(name = "",labels = c("acad","industry","acad and industry")) + 
+  coord_flip() + theme_bw()
