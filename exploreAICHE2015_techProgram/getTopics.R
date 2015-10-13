@@ -69,3 +69,4 @@ for(i in 1:nrow(postprob)){
 topicdf = data.frame(likelytopic1 = likelytopic1,probtopic1 = probtopic1, 
                      likelytopic2 = likelytopic2, probtopic2 = probtopic2)
 topicdf$id = as.numeric(row.names(dtm_m2))
+

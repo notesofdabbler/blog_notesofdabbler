@@ -5,6 +5,8 @@
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(Cairo)
+library(scales)
 
 # load data
 load(file = "talksdf.Rda") # talks
@@ -26,7 +28,6 @@ nrow(talksdf)
 # number of authors
 length(unique(authdf$author2))
 
-
 # number of talks by author
 authtalks = authdf %>% group_by(author2) %>% summarize(numtalks = n()) %>% arrange(desc(numtalks))
 
@@ -38,10 +39,13 @@ ggplot(data = distauthtalks) + geom_bar(aes(x = numtalks,y = numauthors),stat = 
 # authors giving >= 4 talks
 authtalks_ge4 = authtalks %>% filter(numtalks >= 4)
 data.frame(authtalks_ge4)
+
+CairoPNG("authtalks_ge4.png")
 ggplot(data = authtalks_ge4) + 
   geom_bar(aes(x = reorder(as.character(author2),numtalks),y = numtalks),stat = "identity",fill = "grey") + 
   xlab("") + 
-  theme_bw() + coord_flip()
+  theme_bw(20) + coord_flip()
+dev.off()
 
 # number of organizations
 nrow(affillist)
@@ -53,7 +57,7 @@ table(affillist$type)/nrow(affillist)
 affildf2 = affildf %>% filter(affil2 != "Remove") %>% group_by(id,affil2) %>% summarize(cnt = n())
 
 affildf3 = affildf2 %>% group_by(affil2) %>% summarize(numtalks = n()) %>% arrange(desc(numtalks))
-affildf3 = inner_join(affildf3,affilist[,c("affil2","type")],by = "affil2")
+affildf3 = inner_join(affildf3,affillist[,c("affil2","type")],by = "affil2")
 
 distaffiltalks = affildf3 %>% group_by(numtalks) %>% summarize(numaffil = n())
 
@@ -61,18 +65,32 @@ ggplot(data = distaffiltalks) + geom_bar(aes(x = numtalks,y = numaffil),stat = "
   theme_bw()
 
 affildf3_ge5 = affildf3 %>% filter(numtalks >= 5)
+
+CairoPNG("affiltalks.png",height = 500, width = 800)
 ggplot(data = affildf3_ge5) + 
   geom_bar(aes(x = reorder(as.character(affil2),numtalks),y = numtalks,fill = type),stat = "identity") + 
   xlab("") + 
-  theme_bw() + coord_flip()
+  theme_bw(20) + coord_flip()
+dev.off()
 
 # how many joint industry academic talks are there?
-acadind = inner_join(affildf2,affilist[,c("affil2","type")],by = "affil2")
+acadind = inner_join(affildf2,affillist[,c("affil2","type")],by = "affil2")
 acadind2 = acadind %>% group_by(id,type) %>% summarize(cnt = n())
 acadind2$flag = ifelse(acadind2$type == "acad",1,2)
 acadind3 = acadind2 %>% group_by(id) %>% summarize(flagsum = sum(flag))
 
 table(acadind3$flagsum)/nrow(acadind3)
+acadind3dist = acadind3 %>% group_by(flagsum) %>% summarize(numtalks = n())
+acadind3dist$type = c("acad","ind","acad and ind")
+acadind3dist$pcttalks = acadind3dist$numtalks/sum(acadind3dist$numtalks)
+
+CairoPNG("acadind.png",height = 300,width = 400)
+ggplot(data = acadind3dist) + 
+  geom_bar(aes(x = reorder(type,pcttalks), y = pcttalks),fill = "grey",stat = "identity") + 
+  scale_y_continuous(labels = percent) + 
+  xlab("") + ylab("% of talks") + 
+  theme_bw(20) + coord_flip()
+dev.off()
 
 chk_acadind3 = acadind3 %>% filter(flagsum == 3)
 
@@ -100,8 +118,10 @@ acadind3_session = inner_join(acadind3,talksdf[,c("id","session")],by = "id")
 acadind3_session2 = acadind3_session %>% group_by(session,flagsum) %>% summarize(cnt = n())
 acadind3_session2s = spread(acadind3_session2,flagsum,cnt,fill = 0)
 
+CairoPNG("acadind_session.png",height = 600, width = 1200)
 ggplot(data = acadind3_session2) + 
   geom_bar(aes(x = session, y = cnt, fill = factor(flagsum)),stat = "identity",position = "fill") + 
-  xlab("") + ylab("") + 
+  xlab("") + ylab("") + scale_y_continuous(label = percent) + 
   scale_fill_discrete(name = "",labels = c("acad","industry","acad and industry")) + 
   coord_flip() + theme_bw()
+dev.off()
