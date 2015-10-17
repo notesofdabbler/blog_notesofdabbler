@@ -7,6 +7,7 @@ library(tm)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(LDAvis)
 
 # load data
 load(file = "talksdf.Rda") # talks
@@ -54,15 +55,27 @@ dim(dtm_m2)
 numtopics = 10
 SEED = 2345
 fittopic = LDA(dtm_m2, k = numtopics, control = list(seed = SEED))
-Terms = terms(fittopic,10)
+Terms = terms(fittopic,20)
 Terms[,1:numtopics]
+
 
 topicnames = c("bio","crystallization","process design","HME","crystallization 2","dissolution","formulation",
                "modeling","granulation","continuous")
 names(topicnames) = paste0("X",seq(1,10))
 
+# visualize topics
 postprob = posterior(fittopic)$topics
+postprobw = posterior(fittopic)$terms
+doc.length = apply(dtm_m2,1,sum)
+vocab = colnames(dtm_m2)
+term.frequency = apply(dtm_m2,2,sum)
 
+json <- createJSON(phi = postprobw, 
+                   theta = postprob, 
+                   doc.length = doc.length, 
+                   vocab = vocab, 
+                   term.frequency = term.frequency)
+serVis(json)
 
 likelytopic1 = rep(0,nrow(postprob))
 probtopic1 = rep(0,nrow(postprob))
@@ -152,3 +165,63 @@ for(j in 1:numtopics){
   cat(paste(outstr,collapse = "\n"),file = paste0("linkFiles/topictalks",j,".Rmd"))
   
 }
+
+
+## Explore lda package
+
+get.terms <- function(xin) {
+  x = strsplit(as.character(xin),"[[:space:]]+")[[1]]
+  index <- match(x, vocab)
+  index <- index[!is.na(index)]
+  rbind(as.integer(index - 1), as.integer(rep(1, length(index))))
+}
+
+doc_lda = list()
+for(i in 1:nrow(dtm_m2)){
+  doc_lda[[i]] = get.terms(doc2[[i]])
+}
+
+K <- 10
+G <- 5000
+alpha <- 0.02
+eta <- 0.02
+
+set.seed(357)
+fit <- lda.collapsed.gibbs.sampler(documents = doc_lda, K = K, vocab = vocab, 
+                                   num.iterations = G, alpha = alpha, 
+                                   eta = eta, initial = NULL, burnin = 0,
+                                   compute.log.likelihood = TRUE)
+
+theta <- t(apply(fit$document_sums + alpha, 2, function(x) x/sum(x)))
+phi <- t(apply(t(fit$topics) + eta, 2, function(x) x/sum(x)))
+
+json <- createJSON(phi = phi, 
+                   theta = theta, 
+                   doc.length = doc.length, 
+                   vocab = vocab, 
+                   term.frequency = term.frequency)
+
+serVis(json)
+
+postprob = theta
+
+likelytopic1 = rep(0,nrow(postprob))
+probtopic1 = rep(0,nrow(postprob))
+likelytopic2 = rep(0,nrow(postprob))
+probtopic2 = rep(0,nrow(postprob))
+
+for(i in 1:nrow(postprob)){
+  print(i)
+  getprobs = postprob[i,]
+  probtopic1[i] = max(getprobs)
+  likelytopic1[i] = which(getprobs == probtopic1[i])[1]
+  probtopic2[i] = max(getprobs[-likelytopic1[i]])
+  likelytopic2[i] = which(getprobs == probtopic2[i])[1]
+  
+}
+
+topicdf_lda = data.frame(likelytopic1 = likelytopic1,probtopic1 = probtopic1, 
+                     likelytopic2 = likelytopic2, probtopic2 = probtopic2)
+topicdf_lda$id = as.numeric(row.names(dtm_m2))
+topicdf_lda$probtop2 = topicdf_lda$probtopic1 + topicdf_lda$probtopic2
+
