@@ -1,0 +1,84 @@
+[Prediction of Feasible Operating Region for an Integrated Set of Unit Operations](https://aiche.confex.com/aiche/2015/webprogram/Paper415050.html)   
+Most likely topic 8  Probability 46%  
+2nd likely topic 1  Probability 33%  
+
+
+[Erc-Sops - a Pre-Competitive Model for Strategically-Driven Research and Technology Development and Commercialization](https://aiche.confex.com/aiche/2015/webprogram/Paper422671.html)   
+Most likely topic 8  Probability 65%  
+2nd likely topic 1  Probability 34%  
+
+
+[Lipid-Polymeric Hybrid Nanoparticle Based Nicotine Vaccine: Size Matters](https://aiche.confex.com/aiche/2015/webprogram/Paper406800.html)   
+Most likely topic 8  Probability 47%  
+2nd likely topic 6  Probability 37%  
+
+
+[The Use of Gastroplus Modeling in Enabling Drug Discovery Research](https://aiche.confex.com/aiche/2015/webprogram/Paper414059.html)   
+Most likely topic 8  Probability 90%  
+2nd likely topic 6  Probability 10%  
+
+
+[Modeling of Drug Delivery Across the Blood-BRAIN Barrier for the Treatment of Autism Spectrum Disorder](https://aiche.confex.com/aiche/2015/webprogram/Paper430408.html)   
+Most likely topic 8  Probability 100%  
+2nd likely topic 1  Probability 0%  
+
+
+[From in-Vitro Data to Virtual Patients: Development of an in-Silico Model of Acne Pathogenesis for Prioritizing Targets for Novel Acne Therapies and Prediction of Late Stage Clinical Outcomes](https://aiche.confex.com/aiche/2015/webprogram/Paper422560.html)   
+Most likely topic 8  Probability 100%  
+2nd likely topic 2  Probability 0%  
+
+
+[Applications of Modeling & Simulations in Drug Discovery to Support Pharmacology](https://aiche.confex.com/aiche/2015/webprogram/Paper422856.html)   
+Most likely topic 8  Probability 99%  
+2nd likely topic 3  Probability 0%  
+
+
+[How Modeling Tools Benefit Early to Late Stage Formulation Development and the Design of Clinical Studies](https://aiche.confex.com/aiche/2015/webprogram/Paper435605.html)   
+Most likely topic 8  Probability 94%  
+2nd likely topic 6  Probability 6%  
+
+
+[Strategies for Implementation of a New CHO Platform Process](https://aiche.confex.com/aiche/2015/webprogram/Paper418751.html)   
+Most likely topic 8  Probability 70%  
+2nd likely topic 3  Probability 23%  
+
+
+[Multiphase Bioreactor Simulation with GPUs](https://aiche.confex.com/aiche/2015/webprogram/Paper427057.html)   
+Most likely topic 8  Probability 45%  
+2nd likely topic 3  Probability 31%  
+
+
+[Characterization and Modeling of Feeders: A Critical Component in Continuous Pharmaceutical Manufacturing](https://aiche.confex.com/aiche/2015/webprogram/Paper422817.html)   
+Most likely topic 8  Probability 49%  
+2nd likely topic 9  Probability 37%  
+
+
+[Phytochemical Profile and DPPH Free Radical Scavenging of Amazonian Plant Extracts](https://aiche.confex.com/aiche/2015/webprogram/Paper418505.html)   
+Most likely topic 8  Probability 81%  
+2nd likely topic 7  Probability 15%  
+
+
+[Computer Aided Search for Drug Candidates: Cathepsin-L](https://aiche.confex.com/aiche/2015/webprogram/Paper434812.html)   
+Most likely topic 8  Probability 99%  
+2nd likely topic 3  Probability 0%  
+
+
+[Systematic Retrofitting Methodology for Pharmaceutical Drug Purification Processes](https://aiche.confex.com/aiche/2015/webprogram/Paper426939.html)   
+Most likely topic 8  Probability 47%  
+2nd likely topic 3  Probability 27%  
+
+
+[Accuracy of Micro Powder Dosing and Feeding Via a Vibratory Sieve-Chute](https://aiche.confex.com/aiche/2015/webprogram/Paper427621.html)   
+Most likely topic 8  Probability 100%  
+2nd likely topic 10  Probability 0%  
+
+
+[Chromatographic Tools to Predict the Stability of MAbs for Faster Identification of Therapeutic Candidates](https://aiche.confex.com/aiche/2015/webprogram/Paper431162.html)   
+Most likely topic 8  Probability 91%  
+2nd likely topic 2  Probability 9%  
+
+
+[Advancements of Accelerated Stability Studies and Modeling through Use of Nonlinear Kinetics and Bootstrapping](https://aiche.confex.com/aiche/2015/webprogram/Paper434442.html)   
+Most likely topic 8  Probability 50%  
+2nd likely topic 3  Probability 40%  
+

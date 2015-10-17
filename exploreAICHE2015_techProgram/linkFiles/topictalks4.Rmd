@@ -1,0 +1,39 @@
+[Amorphous Solid Dispersion of Poorly Soluble API By Hot Melt Extrusion (HME) and Spray Drying (SD): A Rational Screening Approach](https://aiche.confex.com/aiche/2015/webprogram/Paper427913.html)   
+Most likely topic 4  Probability 52%  
+2nd likely topic 6  Probability 48%  
+
+
+[NANEX: A Continuous Hot-Melt Extrusion (HME) Process for Nano-Based Formulations](https://aiche.confex.com/aiche/2015/webprogram/Paper421449.html)   
+Most likely topic 4  Probability 92%  
+2nd likely topic 9  Probability 7%  
+
+
+[Continuous Manufacturing of Immediate-Release Tablets from Hot-Melt Extruded Pellets](https://aiche.confex.com/aiche/2015/webprogram/Paper427040.html)   
+Most likely topic 4  Probability 36%  
+2nd likely topic 7  Probability 25%  
+
+
+[Fast Screening and Designing Drug-Loaded Polymeric Nanoparticles via Thermodynamic Prediction](https://aiche.confex.com/aiche/2015/webprogram/Paper438620.html)   
+Most likely topic 4  Probability 86%  
+2nd likely topic 7  Probability 13%  
+
+
+[Vacuum Compression Molding As Screening Approach for Hot-Melt Extruded Dosage Forms](https://aiche.confex.com/aiche/2015/webprogram/Paper427252.html)   
+Most likely topic 4  Probability 48%  
+2nd likely topic 7  Probability 43%  
+
+
+[The Effect of Hot Melt Extrusion Process, Polymer Type, and Molecular Weight on Polymer-Water Interactions of Pharmaceutical Excipients for Extrusion](https://aiche.confex.com/aiche/2015/webprogram/Paper417236.html)   
+Most likely topic 4  Probability 100%  
+2nd likely topic 6  Probability 0%  
+
+
+[The Role of Modeling, Simulation and Optimization Approaches in the Design of Pharmaceutical Production Processes](https://aiche.confex.com/aiche/2015/webprogram/Paper424701.html)   
+Most likely topic 4  Probability 100%  
+2nd likely topic 10  Probability 0%  
+
+
+[Dynamic Modeling and Control of Multi-Stage Slug-Flow Crystallization](https://aiche.confex.com/aiche/2015/webprogram/Paper430469.html)   
+Most likely topic 4  Probability 86%  
+2nd likely topic 5  Probability 14%  
+

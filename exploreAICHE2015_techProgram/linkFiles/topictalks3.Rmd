@@ -1,0 +1,184 @@
+[Establishing Content Uniformity Criteria throughout 3-Stage Validation: Estimate, Confirm, and Control](https://aiche.confex.com/aiche/2015/webprogram/Paper429404.html)   
+Most likely topic 3  Probability 52%  
+2nd likely topic 7  Probability 31%  
+
+
+[Systems Based Pharmaceutics Alliance: Research Opportunities for Academics](https://aiche.confex.com/aiche/2015/webprogram/Paper440211.html)   
+Most likely topic 3  Probability 50%  
+2nd likely topic 8  Probability 31%  
+
+
+[Model Based Approach to Control Pinacol Precipitation Risk in in Telescoped Miyaura Borylation/Suzuki Cross-Coupling Process](https://aiche.confex.com/aiche/2015/webprogram/Paper422566.html)   
+Most likely topic 3  Probability 63%  
+2nd likely topic 6  Probability 30%  
+
+
+[Model-Based Risk Mitigation Strategy for Late Stage Development of a Drug Substance Manufacturing Process](https://aiche.confex.com/aiche/2015/webprogram/Paper421691.html)   
+Most likely topic 3  Probability 92%  
+2nd likely topic 8  Probability 8%  
+
+
+[Application of a Closed-Loop Analysis Approach to Achieve Process Robustness of a 25,000L Mammalian Cell Culture Process](https://aiche.confex.com/aiche/2015/webprogram/Paper420144.html)   
+Most likely topic 3  Probability 64%  
+2nd likely topic 1  Probability 36%  
+
+
+[Efficient Experiment Design and Model Generation to Assist Process Decision Making](https://aiche.confex.com/aiche/2015/webprogram/Paper425441.html)   
+Most likely topic 3  Probability 100%  
+2nd likely topic 9  Probability 0%  
+
+
+[Determination of Reaction Profiles Using Online FTIR Spectroscopy Coupled with Kinetics Model-Based Multivariate Curve Resolution](https://aiche.confex.com/aiche/2015/webprogram/Paper428862.html)   
+Most likely topic 3  Probability 82%  
+2nd likely topic 10  Probability 18%  
+
+
+[Predicting Roller Compaction Process Capability](https://aiche.confex.com/aiche/2015/webprogram/Paper430873.html)   
+Most likely topic 3  Probability 100%  
+2nd likely topic 10  Probability 0%  
+
+
+[An Optimization Framework to Combine Design Space Maximization with Design of Experiments](https://aiche.confex.com/aiche/2015/webprogram/Paper413370.html)   
+Most likely topic 3  Probability 100%  
+2nd likely topic 6  Probability 0%  
+
+
+[Optimization of a Reactive Crystallization Using a Pharmaceutical Engineering Approach](https://aiche.confex.com/aiche/2015/webprogram/Paper415213.html)   
+Most likely topic 3  Probability 47%  
+2nd likely topic 2  Probability 32%  
+
+
+[IQ Consortium Enabling Technologies for Pharma](https://aiche.confex.com/aiche/2015/webprogram/Paper413094.html)   
+Most likely topic 3  Probability 90%  
+2nd likely topic 6  Probability 9%  
+
+
+[Precompetitive Collaboration for Pharmaceutical Crystallization Processing](https://aiche.confex.com/aiche/2015/webprogram/Paper419660.html)   
+Most likely topic 3  Probability 99%  
+2nd likely topic 5  Probability 0%  
+
+
+[Allotrope Foundation: Collaborating to Deliver an Innovative Framework for Laboratory Data Based on Open Standards](https://aiche.confex.com/aiche/2015/webprogram/Paper422902.html)   
+Most likely topic 3  Probability 94%  
+2nd likely topic 2  Probability 6%  
+
+
+[GSK Design Space Verification Lab Pilot Project](https://aiche.confex.com/aiche/2015/webprogram/Paper428127.html)   
+Most likely topic 3  Probability 96%  
+2nd likely topic 10  Probability 3%  
+
+
+[The Role of Ncats, SBIR to Support Precompetitive Collaboration](https://aiche.confex.com/aiche/2015/webprogram/Paper421890.html)   
+Most likely topic 3  Probability 78%  
+2nd likely topic 8  Probability 21%  
+
+
+[Development and Scale up of a Continuous Flow Reaction for API Intermediate Manufacture](https://aiche.confex.com/aiche/2015/webprogram/Paper431932.html)   
+Most likely topic 3  Probability 32%  
+2nd likely topic 1  Probability 30%  
+
+
+[Multi-Step Continuous GMP Production of a Highly Potent Compound](https://aiche.confex.com/aiche/2015/webprogram/Paper416384.html)   
+Most likely topic 3  Probability 50%  
+2nd likely topic 1  Probability 17%  
+
+
+[Correlation of Non-Baffled, Angled and Off-Center Agitated Process Vessel Blend Times](https://aiche.confex.com/aiche/2015/webprogram/Paper437406.html)   
+Most likely topic 3  Probability 43%  
+2nd likely topic 9  Probability 28%  
+
+
+[Retreat Curve Impeller Flow and Heat Transfer Characteristics](https://aiche.confex.com/aiche/2015/webprogram/Paper434243.html)   
+Most likely topic 3  Probability 44%  
+2nd likely topic 2  Probability 32%  
+
+
+[PAT Data Management for Continuous Manufacturing  the Next Generation](https://aiche.confex.com/aiche/2015/webprogram/Paper410319.html)   
+Most likely topic 3  Probability 56%  
+2nd likely topic 10  Probability 39%  
+
+
+[Efficient Optimization of Tablet Coating Operation Using Hybrid CFD-DEM Simulations](https://aiche.confex.com/aiche/2015/webprogram/Paper435020.html)   
+Most likely topic 3  Probability 90%  
+2nd likely topic 7  Probability 9%  
+
+
+[Development and Demonstration of a Suite of Tools Aimed at Process Development Intensification and Efficient Experimentation Practices](https://aiche.confex.com/aiche/2015/webprogram/Paper428833.html)   
+Most likely topic 3  Probability 100%  
+2nd likely topic 8  Probability 0%  
+
+
+[Spectroscopy Assisted Process Design for Complex Multi-Phase Organic Reactions](https://aiche.confex.com/aiche/2015/webprogram/Paper417087.html)   
+Most likely topic 3  Probability 79%  
+2nd likely topic 2  Probability 18%  
+
+
+[Simplifying Tablet Film-Coating Process-Scaleup and Transfer through Droplet-Size Measurement](https://aiche.confex.com/aiche/2015/webprogram/Paper434115.html)   
+Most likely topic 3  Probability 56%  
+2nd likely topic 6  Probability 43%  
+
+
+[Modeling of Drug Substance Manufacturing in a Multi-Purpose Plant](https://aiche.confex.com/aiche/2015/webprogram/Paper431772.html)   
+Most likely topic 3  Probability 82%  
+2nd likely topic 1  Probability 14%  
+
+
+[Characterization of Lab and Plant Reactors Using Fast Competitive Reactions and a Predictive Model](https://aiche.confex.com/aiche/2015/webprogram/Paper432317.html)   
+Most likely topic 3  Probability 75%  
+2nd likely topic 9  Probability 21%  
+
+
+[The Confined Impeller Stirred Tank (CIST): A New Mixing Device Designed to Properly Scale-Down Local Mixing Effects in Industrial Applications](https://aiche.confex.com/aiche/2015/webprogram/Paper432326.html)   
+Most likely topic 3  Probability 41%  
+2nd likely topic 2  Probability 36%  
+
+
+[A Hybrid Experimental-Computational Method to Scale-up Powder Dissolution in Viscous Solvent: An Industrial Approach](https://aiche.confex.com/aiche/2015/webprogram/Paper429039.html)   
+Most likely topic 3  Probability 76%  
+2nd likely topic 6  Probability 24%  
+
+
+[Designing for Compaction in Tablets with Spray Dried Intermediates](https://aiche.confex.com/aiche/2015/webprogram/Paper428886.html)   
+Most likely topic 3  Probability 59%  
+2nd likely topic 6  Probability 28%  
+
+
+[A Multi-Fidelity Mechanistic Modeling Framework for Wet Granulation Processes: Characterization and Technology Transfer](https://aiche.confex.com/aiche/2015/webprogram/Paper427688.html)   
+Most likely topic 3  Probability 73%  
+2nd likely topic 9  Probability 26%  
+
+
+[Data Driven Predictive Modeling of Formulation and Process Conditions of Pharmaceutical Spray Dried Intermediates](https://aiche.confex.com/aiche/2015/webprogram/Paper419773.html)   
+Most likely topic 3  Probability 56%  
+2nd likely topic 6  Probability 44%  
+
+
+[Development of a Reactive Slurry-Slurry Approach to Improve Crystallization Process Performance and Scalability](https://aiche.confex.com/aiche/2015/webprogram/Paper427565.html)   
+Most likely topic 3  Probability 34%  
+2nd likely topic 2  Probability 28%  
+
+
+[Hybrid Cell Culture Models for Efficient Process Development](https://aiche.confex.com/aiche/2015/webprogram/Paper429113.html)   
+Most likely topic 3  Probability 55%  
+2nd likely topic 1  Probability 23%  
+
+
+[Increase Cell Culture Development Value Using the Modular Automated Sampling Technology (MASTTM) Platform in an Integrated Bioprocess Lab Environment](https://aiche.confex.com/aiche/2015/webprogram/Paper433606.html)   
+Most likely topic 3  Probability 46%  
+2nd likely topic 10  Probability 37%  
+
+
+[Can R&D be Standardized? Implementation of a Recipe Framework Supporting Lab to Patient Execution and Analytics](https://aiche.confex.com/aiche/2015/webprogram/Paper431023.html)   
+Most likely topic 3  Probability 79%  
+2nd likely topic 8  Probability 21%  
+
+
+[Enabling Rapid Elemental Analysis of Highly-Automated, Parallel Screening Studies for Pharmaceutical Process Development](https://aiche.confex.com/aiche/2015/webprogram/Paper414967.html)   
+Most likely topic 3  Probability 99%  
+2nd likely topic 5  Probability 0%  
+
+
+[Molecular Modeling to Design and Control (M2DC): A First Principles Approach to Polymorph Prediction and Crystallization Unit Design](https://aiche.confex.com/aiche/2015/webprogram/Paper431785.html)   
+Most likely topic 3  Probability 50%  
+2nd likely topic 5  Probability 23%  
+
