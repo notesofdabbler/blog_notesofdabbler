@@ -1,89 +1,35 @@
 [Advancements in the Prediction and Control of Batch High Shear Granulation and Continuous Twin Screw Granulation](https://aiche.confex.com/aiche/2015/webprogram/Paper434636.html)   
-Most likely topic 9  Probability 76%  
-2nd likely topic 8  Probability 18%  
-
 
 [Application of Multivariate Latent Variable Methods to Drug Product Development](https://aiche.confex.com/aiche/2015/webprogram/Paper421708.html)   
-Most likely topic 9  Probability 35%  
-2nd likely topic 7  Probability 26%  
-
 
 [Impact of API Properties and Excipient Source on the Process and Performance of a Typical High Shear Wet Granulation Formulation](https://aiche.confex.com/aiche/2015/webprogram/Paper415192.html)   
-Most likely topic 9  Probability 48%  
-2nd likely topic 6  Probability 32%  
-
 
 [Pharmaceutical Processes Selection from Shear Cell Analysis and Compaction Simulation](https://aiche.confex.com/aiche/2015/webprogram/Paper430102.html)   
-Most likely topic 9  Probability 100%  
-2nd likely topic 7  Probability 0%  
-
 
 [Detailed Simulation of Particle and Liquid Distribution in the Mixing Zone of a Twin-Screw Granulator](https://aiche.confex.com/aiche/2015/webprogram/Paper425544.html)   
-Most likely topic 9  Probability 82%  
-2nd likely topic 1  Probability 17%  
-
 
 [A Case Study in Tuning API Powder Properties Via Crystallization to Meet Formulation Needs](https://aiche.confex.com/aiche/2015/webprogram/Paper433246.html)   
-Most likely topic 9  Probability 38%  
-2nd likely topic 6  Probability 26%  
-
 
 [An Investigation of Mixing Performance of a Continuous Powder Mixing Process](https://aiche.confex.com/aiche/2015/webprogram/Paper425126.html)   
-Most likely topic 9  Probability 93%  
-2nd likely topic 1  Probability 7%  
-
 
 [Comparison of Continuous High Shear Granulation Processes with Twin-Screw Wet Granulation Process](https://aiche.confex.com/aiche/2015/webprogram/Paper422062.html)   
-Most likely topic 9  Probability 84%  
-2nd likely topic 6  Probability 16%  
-
 
 [Experimental Investigation Linking Granulation Performance with Residence Time and Granulation Liquid Distributions in Twin-Screw Granulation](https://aiche.confex.com/aiche/2015/webprogram/Paper427602.html)   
-Most likely topic 9  Probability 100%  
-2nd likely topic 1  Probability 0%  
-
 
 [A DEM Model of Roller Compaction Including Powder Feeding](https://aiche.confex.com/aiche/2015/webprogram/Paper417793.html)   
-Most likely topic 9  Probability 76%  
-2nd likely topic 8  Probability 23%  
-
 
 [Investigation of a Suitable Lubricant for Increasing Slip in a Continuous, Co-Rotating Twin Screw Dry Granulation Process](https://aiche.confex.com/aiche/2015/webprogram/Paper414998.html)   
-Most likely topic 9  Probability 100%  
-2nd likely topic 5  Probability 0%  
-
 
 [The Development of a Suitable Screw Configuration for the Use in a Continuous, Co-Rotating Twin Screw Dry Granulation Process](https://aiche.confex.com/aiche/2015/webprogram/Paper416112.html)   
-Most likely topic 9  Probability 100%  
-2nd likely topic 6  Probability 0%  
-
 
 [Scale-up of Agitated Drying: Using Agitator Motor Power Draw to Control Changes in Powder Properties](https://aiche.confex.com/aiche/2015/webprogram/Paper419741.html)   
-Most likely topic 9  Probability 79%  
-2nd likely topic 3  Probability 21%  
-
 
 [Rational Scale-up of Hot Melt Extruders: 1D Predictive Modeling Based on 3D Smoothed Particle Hydrodynamics](https://aiche.confex.com/aiche/2015/webprogram/Paper424868.html)   
-Most likely topic 9  Probability 34%  
-2nd likely topic 4  Probability 34%  
-
 
 [Primary Nucleation Under High Shear Conditions](https://aiche.confex.com/aiche/2015/webprogram/Paper416357.html)   
-Most likely topic 9  Probability 45%  
-2nd likely topic 2  Probability 26%  
-
 
 [Prediction of Lubrication-Based Tensile Strength Reduction Using a Compartment Modeling Approach](https://aiche.confex.com/aiche/2015/webprogram/Paper425191.html)   
-Most likely topic 9  Probability 40%  
-2nd likely topic 7  Probability 36%  
-
 
 [FEM Simulations on Tablet Impact](https://aiche.confex.com/aiche/2015/webprogram/Paper419801.html)   
-Most likely topic 9  Probability 29%  
-2nd likely topic 7  Probability 29%  
-
 
 [Effect of Seed Type on the Resistance of API Agglomerates to Agitated Drying](https://aiche.confex.com/aiche/2015/webprogram/Paper427844.html)   
-Most likely topic 9  Probability 90%  
-2nd likely topic 5  Probability 9%  
-

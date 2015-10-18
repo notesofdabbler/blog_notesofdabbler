@@ -1,89 +1,35 @@
 [High-Throughput Polymer Screening for Oral Drug Delivery: From Discovery to Design](https://aiche.confex.com/aiche/2015/webprogram/Paper419844.html)   
-Most likely topic 6  Probability 55%  
-2nd likely topic 8  Probability 24%  
-
 
 [Evaluation of Static or Dynamic Curing Process for Improved Controlled Release, Dry Powder Coatings of Ethylcellulose Using a Rotor Coater](https://aiche.confex.com/aiche/2015/webprogram/Paper428444.html)   
-Most likely topic 6  Probability 100%  
-2nd likely topic 3  Probability 0%  
-
 
 [Characterizing and Understanding Protein Stability at High Concentration](https://aiche.confex.com/aiche/2015/webprogram/Paper416959.html)   
-Most likely topic 6  Probability 36%  
-2nd likely topic 1  Probability 28%  
-
 
 [Controlling Mechanical Properties and Dissolution Rate of Strip Films Loaded with Griseofulvin Nanoparticles](https://aiche.confex.com/aiche/2015/webprogram/Paper430373.html)   
-Most likely topic 6  Probability 82%  
-2nd likely topic 2  Probability 18%  
-
 
 [High Throughput Synthesis of Nanovaccine Formulations](https://aiche.confex.com/aiche/2015/webprogram/Paper434194.html)   
-Most likely topic 6  Probability 89%  
-2nd likely topic 8  Probability 11%  
-
 
 [A Drug-Sparing Approach to the Preparation of Drug Nanosuspensions: High-Intensity Vibratory Milling](https://aiche.confex.com/aiche/2015/webprogram/Paper414380.html)   
-Most likely topic 6  Probability 100%  
-2nd likely topic 3  Probability 0%  
-
 
 [Enhanced Spray Drying Throughput with High Productivity Hypromellose Acetate Succinate](https://aiche.confex.com/aiche/2015/webprogram/Paper416476.html)   
-Most likely topic 6  Probability 55%  
-2nd likely topic 7  Probability 43%  
-
 
 [Measuring Blend Hydrophobicity By Single Droplet Penetration Technique](https://aiche.confex.com/aiche/2015/webprogram/Paper425187.html)   
-Most likely topic 6  Probability 54%  
-2nd likely topic 9  Probability 26%  
-
 
 [Enhanced Dissolution of Itraconazole from Surfactant-Free Nanocomposite Microparticles](https://aiche.confex.com/aiche/2015/webprogram/Paper439687.html)   
-Most likely topic 6  Probability 100%  
-2nd likely topic 8  Probability 0%  
 
-
-[Production of Amorphous Nano-Solid Dispersions Using a Solvent Controlled Precipitation Process – Benchmarking with the Spray Drying Process](https://aiche.confex.com/aiche/2015/webprogram/Paper425948.html)   
-Most likely topic 6  Probability 100%  
-2nd likely topic 5  Probability 0%  
-
+[Production of Amorphous Nano-Solid Dispersions Using a Solvent Controlled Precipitation Process ? Benchmarking with the Spray Drying Process](https://aiche.confex.com/aiche/2015/webprogram/Paper425948.html)   
 
 [Particle Engineering of Cocrystals Using a Solvent-Free Approach By Spray Congealing](https://aiche.confex.com/aiche/2015/webprogram/Paper425747.html)   
-Most likely topic 6  Probability 70%  
-2nd likely topic 7  Probability 20%  
-
 
 [Improving Dissolution Kinetics of Pharmaceuticals By Fluidized Bed Impregnation](https://aiche.confex.com/aiche/2015/webprogram/Paper432520.html)   
-Most likely topic 6  Probability 100%  
-2nd likely topic 5  Probability 0%  
-
 
 [Development of Retinoid ST1926 Nanoparticle Formulation Via Flash Nanoprecipitation](https://aiche.confex.com/aiche/2015/webprogram/Paper427449.html)   
-Most likely topic 6  Probability 37%  
-2nd likely topic 7  Probability 34%  
 
-
-[Investigation of the Formation of Nanoscale 2CL-20 · HMX Cocrystal](https://aiche.confex.com/aiche/2015/webprogram/Paper427862.html)   
-Most likely topic 6  Probability 41%  
-2nd likely topic 2  Probability 32%  
-
+[Investigation of the Formation of Nanoscale 2CL-20 ? HMX Cocrystal](https://aiche.confex.com/aiche/2015/webprogram/Paper427862.html)   
 
 [Continuous Production of Polymer Coated Drug Crystals, Particles and Nanoparticles](https://aiche.confex.com/aiche/2015/webprogram/Paper432022.html)   
-Most likely topic 6  Probability 72%  
-2nd likely topic 5  Probability 28%  
 
-
-[Microfluidic Spherical Crystallization and Co-Formulation of Drugs and Excipients – Controlling Morphology and Polymorphism](https://aiche.confex.com/aiche/2015/webprogram/Paper417728.html)   
-Most likely topic 6  Probability 34%  
-2nd likely topic 5  Probability 28%  
-
+[Microfluidic Spherical Crystallization and Co-Formulation of Drugs and Excipients ? Controlling Morphology and Polymorphism](https://aiche.confex.com/aiche/2015/webprogram/Paper417728.html)   
 
 [Crystal Growth Inhibition of a Poorly Water-Soluble Drug Using Polymeric Additives](https://aiche.confex.com/aiche/2015/webprogram/Paper430222.html)   
-Most likely topic 6  Probability 52%  
-2nd likely topic 2  Probability 47%  
-
 
 [Stability By Design (SbD): Utilizing Material Science Principles to Predict Physical and Chemical Stability of Pharmaceutical Solids](https://aiche.confex.com/aiche/2015/webprogram/Paper427772.html)   
-Most likely topic 6  Probability 38%  
-2nd likely topic 2  Probability 27%  
-

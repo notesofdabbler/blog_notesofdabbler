@@ -2,17 +2,26 @@
 #  Get topics from abstracts of talks
 #
 
-library(topicmodels)
-library(tm)
-library(dplyr)
-library(tidyr)
-library(ggplot2)
-library(LDAvis)
+# load libraries
+library(topicmodels) # used to determine topics
+library(tm) # used for text processing
+library(dplyr) # data munging
+library(tidyr) # data munging
+library(ggplot2) # plotting
+library(LDAvis) # visualizing LDA results
+library(Cairo) # output plots
+library(scales) # formatting of ggplot2 plot lables
 
 # load data
 load(file = "talksdf.Rda") # talks
 load("talkdetaildf.Rda") # talk abstracts
 affildf = read.csv("affildf_clean.csv",stringsAsFactors = FALSE) # list of organizations for each talk
+affillist = read.csv("affillist.csv",stringsAsFactors = FALSE) # list of organizations
+
+##------------------ Get data ready for text analysis -------------
+
+# Lot of code adapated from
+# https://cran.r-project.org/web/packages/topicmodels/vignettes/topicmodels.pdf
 
 
 abstracts = talkdetaildf$abstract
@@ -44,26 +53,47 @@ dtm_m = as.matrix(dtm)
 dtm_m2 = dtm_m[,termFreq >= mincnt]
 dim(dtm_m2)
 
+# check frequent terms again
 termFreq_chk = colSums(dtm_m2)
 termFreq_chk = sort(termFreq_chk,decreasing = TRUE)
 head(termFreq_chk,30)
 
+# keep rows that have at least one word from the truncated word list
 rowsum_chk = rowSums(dtm_m2)
 dtm_m2 = dtm_m2[rowsum_chk > 0,]
 dim(dtm_m2)
+
+##----------------------- Fit topic model -----------------------
+
+# Lot of code adapated from
+# https://cran.r-project.org/web/packages/topicmodels/vignettes/topicmodels.pdf
 
 numtopics = 10
 SEED = 2345
 fittopic = LDA(dtm_m2, k = numtopics, control = list(seed = SEED))
 Terms = terms(fittopic,20)
-Terms[,1:numtopics]
 
+# plot the top likely words in each topic
+dfTerms = data.frame(Terms)
+dfTerms$num = seq(nrow(dfTerms),1)
+dfTerms_g = gather(dfTerms,topic,term,-num)
+dfTerms_g$x = 1
 
-topicnames = c("bio","crystallization","process design","HME","crystallization 2","dissolution","formulation",
-               "modeling","granulation","continuous")
+CairoPNG("topicTerms.png",height = 600,width = 1200)
+ggplot(dfTerms_g) + geom_text(aes(x = x,y = num,label = term)) + facet_grid(~topic) + 
+  xlab("") + ylab("") + 
+  theme_bw() + 
+  theme(axis.text.x = element_blank(),axis.text.y = element_blank(),panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+dev.off()
+
+# Give names to the topics
+topicnames = c("bio","crystallization","process dev/modeling","HME","crystallization 2","dissolution/enabled formulation",
+               "formulation","modeling","granulation/mixing","continuous")
 names(topicnames) = paste0("X",seq(1,10))
 
 # visualize topics
+# http://cpsievert.github.io/LDAvis/reviews/reviews.html
 postprob = posterior(fittopic)$topics
 postprobw = posterior(fittopic)$terms
 doc.length = apply(dtm_m2,1,sum)
@@ -75,8 +105,9 @@ json <- createJSON(phi = postprobw,
                    doc.length = doc.length, 
                    vocab = vocab, 
                    term.frequency = term.frequency)
-serVis(json)
+#serVis(json)
 
+# get likelytopic and 2nd likelytopic for each talk
 likelytopic1 = rep(0,nrow(postprob))
 probtopic1 = rep(0,nrow(postprob))
 likelytopic2 = rep(0,nrow(postprob))
@@ -95,54 +126,62 @@ for(i in 1:nrow(postprob)){
 topicdf = data.frame(likelytopic1 = likelytopic1,probtopic1 = probtopic1, 
                      likelytopic2 = likelytopic2, probtopic2 = probtopic2)
 topicdf$id = as.numeric(row.names(dtm_m2))
+topicdf$likelytopic1n = topicnames[topicdf$likelytopic1]
 
-dfpostprob = data.frame(postprob)
-dfpostprob$id = as.numeric(row.names(dtm_m2))
-dfpostprob_g = gather(dfpostprob,topicnum,prob,-id)
-dfpostprob_g = inner_join(dfpostprob_g,talksdf[,c("id","session")],by = "id")
+# get number of talks in each topic
+topicdf_s = topicdf %>% group_by(likelytopic1n) %>% summarize(numtalks = n())
 
-dfpostprob_gsumm = dfpostprob_g %>% group_by(session,topicnum) %>% summarize(avgprob = mean(prob))
-dfpostprob_gsumm$topicname = topicnames[dfpostprob_gsumm$topicnum]
+CairoPNG("topictalks.png")
+ggplot(data = topicdf_s) + 
+  geom_bar(aes(x = reorder(likelytopic1n,numtalks),y = numtalks),fill = "grey",stat = "identity") + 
+  xlab("") + ylab("number of talks") + 
+   theme_bw(20) + coord_flip()
+dev.off()
 
-dfpostprob_summ = spread(dfpostprob_gsumm,topicnum,avgprob)
+# get percentage of talks in a session belonging to each topic (talks are assigned the likely topic)
+topicdf2 = inner_join(topicdf,talksdf[,c("id","session")],by = "id")
+topicdf2_s = topicdf2 %>% group_by(session,likelytopic1n) %>% summarize(numtalks = n())
+topicdf2_s = topicdf2_s %>% group_by(session) %>% mutate(pcttalks = numtalks/sum(numtalks))
 
-
-likelytopic1s = rep(0,nrow(dfpostprob_summ))
-probtopic1s = rep(0,nrow(dfpostprob_summ))
-likelytopic2s = rep(0,nrow(dfpostprob_summ))
-probtopic2s = rep(0,nrow(dfpostprob_summ))
-
-for(i in 1:nrow(dfpostprob_summ)){
-
-  print(i)  
-  getprobs = as.numeric(dfpostprob_summ[i,2:11])
-  probtopic1s[i] = max(getprobs)
-  likelytopic1s[i] = which(getprobs == probtopic1s[i])
-  probtopic2s[i] = max(getprobs[-likelytopic1s[i]])
-  likelytopic2s[i] = which(getprobs == probtopic2s[i])
-  
-}
-
-sessiontopics = data.frame(dfpostprob_summ$session, likelytopic1s = likelytopic1s,probtopic1s = probtopic1s, 
-                                     likelytopic2s = likelytopic2s, probtopic2s = probtopic2s)
-sessiontopics$top2prob = sessiontopics$probtopic1s + sessiontopics$probtopic2s
-
-ggplot(data = dfpostprob_gsumm) + geom_tile(aes(x = topicname, y = session, fill = avgprob)) + 
+CairoPNG("sessiontopics.png",height = 600,width = 1200)
+ggplot(data = topicdf2_s) + geom_tile(aes(x = likelytopic1n, y = session, fill = pcttalks)) + 
   scale_fill_gradient(low = "white",high = "darkblue") + 
+  xlab("") + ylab("") + guides(fill = FALSE) + 
   theme_bw() + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
-  
-dfpostprob_gaffil = inner_join(dfpostprob_g,affildf[,c("id","affil2")],by = "id")
-dfpostprob_gaffilsumm = dfpostprob_gaffil %>% group_by(affil2,topicnum) %>% summarize(avgprob = mean(prob))
-dfpostprob_affilsumm = spread(dfpostprob_gaffilsumm,topicnum,avgprob)
+dev.off()
 
+# get percentage of talks in an organization belonging to each topic (talks are assigned likely topic)
+# filter to top 10 organizations in terms of talks
 topaffil = affildf %>% filter(affil2 != "Remove") %>% group_by(id, affil2) %>% summarize(cnt = n())
 topaffil2 = topaffil %>% group_by(affil2) %>% summarize(numtalks = n()) %>% arrange(desc(numtalks))
 
-dfpostprob_gaffilsumm2 = inner_join(dfpostprob_gaffilsumm,topaffil2[1:10,1],by = "affil2")
+topicdf2_affil = inner_join(topicdf2,affildf[,c("id","affil2")],by = "id")
+topicdf2_affils = topicdf2_affil %>% group_by(affil2,likelytopic1n) %>% summarize(numtalks = n())
+topicdf2_affils = topicdf2_affils %>% group_by(affil2) %>% mutate(pcttalks = numtalks/sum(numtalks))
+topicdf2_affils_f = inner_join(topicdf2_affils,topaffil2[1:10,c("affil2")],by = "affil2")
 
-ggplot(data = dfpostprob_gaffilsumm2) + geom_tile(aes(x = topicnum,y = affil2, fill = avgprob)) + 
-    scale_fill_gradient(low = "white",high = "darkblue") + theme_bw()
+CairoPNG("affiltopics.png",height = 600, width = 1200)
+ggplot(data = topicdf2_affils_f) + geom_tile(aes(x = likelytopic1n,y = affil2, fill = pcttalks)) + 
+  scale_fill_gradient(low = "white",high = "darkblue") + 
+  xlab("") + ylab("") + guides(fill = FALSE) + 
+  theme_bw(20) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+dev.off()
+
+# Get percentage of talks by acad vs industry affilation
+topicdf2_affils2 = inner_join(topicdf2_affils,affillist[,c("affil2","type")],by = "affil2")
+topicdf2_affils3 = topicdf2_affils2 %>% group_by(type,likelytopic1n) %>% summarize(numtalks = sum(numtalks)) 
+topicdf2_affils3 = topicdf2_affils3 %>% group_by(type) %>% mutate(pcttalks = numtalks/sum(numtalks))
+
+CairoPNG("typetopics.png",height = 600, width = 900)
+ggplot(topicdf2_affils3) + 
+  geom_bar(aes(x = factor(likelytopic1n),y = pcttalks,fill = type),stat = "identity",position = "dodge") + 
+  xlab("") + ylab("% talks") + scale_y_continuous(labels = percent) + 
+  theme_bw(20) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+dev.off()
+
 
 # Output links to talks for each likely topic
 
@@ -155,73 +194,15 @@ for(j in 1:numtopics){
   for(i in 1:nrow(topictalks)){
     title = topictalks$title[i]
     talkurl = topictalks$talkurl[i]
-    outstr[k] = paste0("[",title,"](",talkurl,")   ")
+    outstr[k] = paste0("[",title,"](",talkurl,")   \n")
     k = k + 1
-    outstr[k] = paste0("Most likely topic ",topictalks$likelytopic1[i], "  Probability ",round(topictalks$probtopic1[i]*100),"%","  ")
-    k = k + 1
-    outstr[k] = paste0("2nd likely topic ",topictalks$likelytopic2[i], "  Probability ",round(topictalks$probtopic2[i]*100),"%","  \n\n")
-    k = k + 1
+    #outstr[k] = paste0("Most likely topic ",topictalks$likelytopic1[i], "  Probability ",round(topictalks$probtopic1[i]*100),"%","  ")
+    #k = k + 1
+    #outstr[k] = paste0("2nd likely topic ",topictalks$likelytopic2[i], "  Probability ",round(topictalks$probtopic2[i]*100),"%","  \n\n")
+    #k = k + 1
   }
   cat(paste(outstr,collapse = "\n"),file = paste0("linkFiles/topictalks",j,".Rmd"))
   
 }
 
-
-## Explore lda package
-
-get.terms <- function(xin) {
-  x = strsplit(as.character(xin),"[[:space:]]+")[[1]]
-  index <- match(x, vocab)
-  index <- index[!is.na(index)]
-  rbind(as.integer(index - 1), as.integer(rep(1, length(index))))
-}
-
-doc_lda = list()
-for(i in 1:nrow(dtm_m2)){
-  doc_lda[[i]] = get.terms(doc2[[i]])
-}
-
-K <- 10
-G <- 5000
-alpha <- 0.02
-eta <- 0.02
-
-set.seed(357)
-fit <- lda.collapsed.gibbs.sampler(documents = doc_lda, K = K, vocab = vocab, 
-                                   num.iterations = G, alpha = alpha, 
-                                   eta = eta, initial = NULL, burnin = 0,
-                                   compute.log.likelihood = TRUE)
-
-theta <- t(apply(fit$document_sums + alpha, 2, function(x) x/sum(x)))
-phi <- t(apply(t(fit$topics) + eta, 2, function(x) x/sum(x)))
-
-json <- createJSON(phi = phi, 
-                   theta = theta, 
-                   doc.length = doc.length, 
-                   vocab = vocab, 
-                   term.frequency = term.frequency)
-
-serVis(json)
-
-postprob = theta
-
-likelytopic1 = rep(0,nrow(postprob))
-probtopic1 = rep(0,nrow(postprob))
-likelytopic2 = rep(0,nrow(postprob))
-probtopic2 = rep(0,nrow(postprob))
-
-for(i in 1:nrow(postprob)){
-  print(i)
-  getprobs = postprob[i,]
-  probtopic1[i] = max(getprobs)
-  likelytopic1[i] = which(getprobs == probtopic1[i])[1]
-  probtopic2[i] = max(getprobs[-likelytopic1[i]])
-  likelytopic2[i] = which(getprobs == probtopic2[i])[1]
-  
-}
-
-topicdf_lda = data.frame(likelytopic1 = likelytopic1,probtopic1 = probtopic1, 
-                     likelytopic2 = likelytopic2, probtopic2 = probtopic2)
-topicdf_lda$id = as.numeric(row.names(dtm_m2))
-topicdf_lda$probtop2 = topicdf_lda$probtopic1 + topicdf_lda$probtopic2
 
