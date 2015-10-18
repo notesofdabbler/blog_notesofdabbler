@@ -1,7 +1,7 @@
 
 # Exploring AIChE 2015 Technical Program (PD2M topic)
 
-[AIChE](http://www.aiche.org/) (American Institute of Chemical Engineers) holds an [annual meeting](http://www.aiche.org/conferences/aiche-annual-meeting/2015) in November. It has several topical sessions. I wanted to explore the topic session called PD2M (Pharmaceutical Discovery, Development and Manufacturing Forum).  
+[AIChE](http://www.aiche.org/) (American Institute of Chemical Engineers) holds an [annual meeting](http://www.aiche.org/conferences/aiche-annual-meeting/2015) in November. It has several topical sessions. I wanted to explore the topic session called [PD2M](https://aiche.confex.com/aiche/2015/webprogram/26.html) (Pharmaceutical Discovery, Development and Manufacturing Forum).  
 
 I wanted to answer the following questions:
 

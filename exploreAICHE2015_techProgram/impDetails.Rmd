@@ -1,22 +1,25 @@
 
 # Exploring AIChE 2015 Technical Program (PD2M topic): Implementation Details
 
-You can find the main write up of this in this location. This document lists the locations of code used.
+You can find the main write up of this in this [location](writeup.html). This document lists the locations of code used.
 
 ## Getting data (Scraping data from the web)
 
-The first step to this analysis is getting data on the PD2M program (sesssions, talk title, authors, organization, abstract). The [rvest](https://cran.r-project.org/web/packages/rvest/index.html) package in R makes it easy to scrape websites. The code for scraping the data is [here](scrapeData.R). The part which was tricky and required some manual cleaning was extracting organization names. I used the [Standford Named Entity Recognizer](http://nlp.stanford.edu/software/CRF-NER.shtml) through the R package [StanfordCoreNLP](http://datacube.wu.ac.at/) for tagging the organization names and then cleaned up names that were incorrect. 
+The first step to this analysis is getting data on the PD2M program (sesssions, talk title, authors, organization, abstract). The [rvest](https://cran.r-project.org/web/packages/rvest/index.html) package in R makes it easy to scrape websites. The code for scraping the data is [here][scrapeData]. The part which was tricky and required some manual cleaning was extracting organization names. I used the [Standford Named Entity Recognizer](http://nlp.stanford.edu/software/CRF-NER.shtml) through the R package [StanfordCoreNLP](http://datacube.wu.ac.at/) for tagging the organization names and then cleaned up names that were incorrect. 
 
 ## Exploring data
 
-Basic summaries by talk, sessions, authors is in this [file](exploreData.R)
+Basic summaries by talk, sessions, authors is in this [file][exploreData]
 
 ## Getting Topics from data
 
-The estimation of underlying topics and summaries based on the estimated topics is in this [file](getTopics.R).
+The estimation of underlying topics and summaries based on the estimated topics is in this [file][getTopics].
 
 ## Session Info
 
 All of this analysis was done in RStudio (version 0.99.465). 
 
 
+[scrapeData]:https://github.com/notesofdabbler/blog_notesofdabbler/tree/master/exploreAICHE2015_techProgram/scrapeData.R
+[exploreData]:https://github.com/notesofdabbler/blog_notesofdabbler/tree/master/exploreAICHE2015_techProgram/exploreData.R
+[getTopics]:https://github.com/notesofdabbler/blog_notesofdabbler/tree/master/exploreAICHE2015_techProgram/getTopics.R
