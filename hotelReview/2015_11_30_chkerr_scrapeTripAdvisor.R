@@ -170,3 +170,22 @@ dfrating$fullrev=fullrev
 # save to Rdataset
 filenm=paste("2015_11_30_dfrating_",pickhotel,".Rda",sep="")
 save(dfrating,file=filenm)
+
+# SessionInfo where this code ran
+#
+# R version 3.1.1 (2014-07-10)
+# Platform: x86_64-w64-mingw32/x64 (64-bit)
+# 
+# locale:
+#   [1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252    LC_MONETARY=English_United States.1252
+# [4] LC_NUMERIC=C                           LC_TIME=English_United States.1252    
+# 
+# attached base packages:
+#   [1] stats     graphics  grDevices utils     datasets  methods   base     
+# 
+# other attached packages:
+#   [1] ggplot2_1.0.0   lubridate_1.3.3 XML_3.98-1.1    RCurl_1.95-4.3  bitops_1.0-6   
+# 
+# loaded via a namespace (and not attached):
+#   [1] colorspace_1.2-4 digest_0.6.4     grid_3.1.1       gtable_0.1.2     MASS_7.3-33      memoise_0.2.1    munsell_0.4.2   
+# [8] plyr_1.8.1       proto_0.3-10     Rcpp_0.11.6      reshape2_1.4     scales_0.3.0     stringr_0.6.2    tools_3.1.1    
