@@ -75,6 +75,8 @@ for(i in 1:length(rmdfileListlink)) {
 liblistdf = bind_rows(liblistL)
 libcountdf = liblistdf %>% count(liblist, sort = TRUE)
 
+#' The plot below shows the number of analysis in which each package was
+#' used.
 #+ libcntplt, fig.path = "figure/"
 ggplot(libcountdf) + geom_col(aes(x = fct_reorder(liblist, n), y = n), fill = "blue") + 
   labs(x = "", y = "# analysis that used the library") + theme_bw() + coord_flip()
@@ -89,6 +91,7 @@ ggplot(libcountdf) + geom_col(aes(x = fct_reorder(liblist, n), y = n), fill = "b
 fnlistdf = bind_rows(fnlistL)
 fncountdf = fnlistdf %>% count(fnlist, sort = TRUE)
 
+#' The table below lists the functions extracted from Rmd files.
 datatable(fncountdf)
 
 #' The current logic extracts things such as *aes*, *c*, *scale_x_continuous* which
@@ -118,14 +121,16 @@ fncountpltdf = fncountdf2 %>%
 # Count number of functions used in each package
 pkgfncount = fncountdf2 %>% count(pkg, sort = TRUE)
 
+#' The plot below shows the number of functions used in each package
 #+ pkgcntplt, fig.path = "figure/"
 ggplot(pkgfncount) + geom_col(aes(x = fct_reorder(pkg, nn), y = nn), fill = "blue") + 
   labs(x = "", y = "# functions") + theme_bw() + coord_flip()
 
  
 #' As expected, most used functions are from *ggplot2*, *dplyr*, *tidyr* since there
-#' is lot of exploratory analysis and visualization of data in the screencasts. We next plot the
-#' The plot below shows the list of functions used in *ggplot2* and *dplyr*.
+#' is lot of exploratory analysis and visualization of data in the screencasts. 
+#' 
+#' We next plot the list of functions used from each package.
 
 getplot = function(df) {
   p = ggplot() + geom_col(data = df, aes(x = fnlist2, y = n), fill = "blue") 
